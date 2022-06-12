@@ -10,3 +10,11 @@ $transitionDurations: (
         'default': 300ms,
         'long': 500ms,
 );
+
+
+$sansSerifFallbackFonts: (Helvetica, Arial, sans-serif);
+$serifFallbackFonts: (Georgia, serif);
+
+$primaryFontStack: ("Neris black", $sansSerifFallbackFonts);
+$inGameFontStack: ("Lilita One", $sansSerifFallbackFonts);
+$inGameSerifFontStack: ("Nougat", $serifFallbackFonts);
