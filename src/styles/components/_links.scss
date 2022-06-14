@@ -1,0 +1,36 @@
+@import "../../styles/abstracts/colors";
+@import "../../styles/abstracts/mixins";
+
+.link {
+  color: $lightningYellow;
+
+  @include on-hover() {
+    color: $California;
+  }
+
+  @include on-focus() {
+    color: $flamenco;
+  }
+
+  @include on-active() {
+    color: $flamenco;
+  }
+
+  &--text {
+    text-shadow: 1px 1px 0 $black;
+    @include transition(('color'), 'short');
+  }
+
+  &--icon {
+    display: inline-block;
+    @include transition(('color', 'transform'), 'short');
+
+    @include on-focus() {
+      transform: scale(0.95);
+    }
+
+    @include on-active() {
+      transform: scale(0.95);
+    }
+  }
+}

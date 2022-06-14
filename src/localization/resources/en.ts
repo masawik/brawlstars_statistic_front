@@ -2,7 +2,7 @@ import { Localization } from './baseType'
 
 const en: Localization = {
 
-  translation: { testTitle: 'Hello!' },
+  translation: {},
 }
 
 export default en

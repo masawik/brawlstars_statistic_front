@@ -3,6 +3,7 @@
 
 .header {
   background-color: $denim;
+  margin-bottom: 15px;
 }
 
 .header__content {
@@ -12,6 +13,6 @@
 }
 
 .header__logoLink {
-  display: inline-block;
   @include size(50px);
 }
+

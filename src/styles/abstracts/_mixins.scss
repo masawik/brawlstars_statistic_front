@@ -25,11 +25,11 @@
 
 @mixin transition(
   $properties: 'color',
-  $transitionDuration: map-get($transitionDurations, 'default')
+  $transitionDuration: 'default'
 ) {
   //на событиях active по дефолту ставится transition-duration = 'short'
   transition-timing-function: ease-in-out;
-  transition-duration: $transitionDuration;
+  transition-duration: map-get($transitionDurations, $transitionDuration);
   transition-property: $properties;
 }
 

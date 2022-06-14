@@ -1,0 +1,112 @@
+@import "../../styles/abstracts/colors";
+@import "../../styles/abstracts/mixins";
+
+.btn {
+  position: relative;
+  padding: 5px 10px;
+  z-index: 1;
+  color: $white;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 1px solid $black;
+    border-radius: 2px;
+    z-index: -1;
+    box-shadow: 1px 2px 0 0 rgb(0 0 0 / 80%),
+    inset 0 -3px 0 0 rgb(0 0 0 / 25%),
+    inset 0 3px 0 0 rgb(255 255 255 / 20%);
+    transform: skewX(-7deg);
+    content: '';
+
+    @include transition(('background-color', 'transform', 'box-shadow'), 'short');
+  }
+
+  &--primary {
+    &::after {
+      background-color: $mariner;
+    }
+
+    @include on-hover() {
+      &::after {
+        background-color: $denim;
+      }
+    }
+
+    @include on-focus() {
+      &::after {
+        background-color: $denim;
+      }
+    }
+  }
+
+  &--success {
+    &::after {
+      background-color: $malachite;
+    }
+
+    @include on-hover() {
+      &::after {
+        background-color: $japaneseLaurel;
+      }
+    }
+
+    @include on-focus() {
+      &::after {
+        background-color: $japaneseLaurel;
+      }
+    }
+  }
+
+  &--danger {
+    &::after {
+      background-color: $crimson;
+    }
+
+    @include on-hover() {
+      &::after {
+        background-color: $cardinal;
+      }
+    }
+
+    @include on-focus() {
+      &::after {
+        background-color: $cardinal;
+      }
+    }
+  }
+
+  &--warning {
+    &::after {
+      background-color: $lightningYellow;
+    }
+
+    @include on-hover() {
+      &::after {
+        background-color: $flamenco;
+      }
+    }
+
+    @include on-focus() {
+      &::after {
+        background-color: $flamenco;
+      }
+    }
+  }
+
+  @include on-focus() {
+    &::after {
+      transform: skewX(-7deg) scale(0.98);
+    }
+  }
+
+  @include on-active() {
+    &::after {
+      box-shadow: 1px 2px 0 0 rgb(0 0 0 / 80%), inset 0 1px 0 0 rgb(0 0 0 / 25%);
+      transform: skewX(-7deg) scale(0.98);
+    }
+  }
+}
