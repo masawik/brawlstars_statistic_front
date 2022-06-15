@@ -10,7 +10,7 @@ const Events = () => {
         <Event
           title='GEM GRUB'
           description='test map name'
-          gameMode={EventModes.GEM_GRAB}
+          gameMode={EventModes.BIG_GAME}
         />
       </div>
     </section>

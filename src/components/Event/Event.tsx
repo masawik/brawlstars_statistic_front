@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Event.module.scss'
 import defaultEventImage from '../../assets/img/map_23b.png'
 import { EventModes } from '../../typings/eventModes'
-import getColorAndImageByGameMode from './getColorAndImageByGameMode'
+import getGameModeData from './getGameModeData'
 
 interface EventProps {
   title: string
@@ -20,7 +20,7 @@ const Event: React.FC<EventProps> =
    }) => {
 
     const { gameModeIconPath, gameModeColor } =
-      getColorAndImageByGameMode(gameMode)
+      getGameModeData(gameMode)
 
     const eventImageStyles: React.CSSProperties =
       { backgroundImage: `url(${backgroundImagePath})` }
