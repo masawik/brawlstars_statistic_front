@@ -4,7 +4,7 @@ import defaultEventImage from '../../assets/img/map_23b.png'
 import { EventModes } from '../../typings/eventModes'
 import getGameModeData from './getGameModeData'
 
-interface EventProps {
+export interface EventProps {
   title: string
   description: string
   gameMode: EventModes
@@ -32,7 +32,7 @@ const Event: React.FC<EventProps> =
       }
 
     return (
-      <div className={styles.event}>
+      <a href='#' className={styles.event}>
         <div className={styles.event__content}>
           <div style={eventInfoStyles} className={styles.event__info}>
             <div className={styles.event__title}>{title}</div>
@@ -42,7 +42,7 @@ const Event: React.FC<EventProps> =
 
           <div style={eventImageStyles} className={styles.event__image} />
         </div>
-      </div>
+      </a>
     )
   }
 

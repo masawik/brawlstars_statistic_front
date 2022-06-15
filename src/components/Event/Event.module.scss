@@ -6,12 +6,32 @@ $containerSkew: 5deg;
 
 .event {
   position: relative;
+  display: block;
   $width: 260;
-  border: 1px solid $black;
+  border: 2px solid $black;
+  border-radius: 2px;
   width: $width + px;
   height: ($width / 2.5) + px;
   overflow: hidden;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.5);
   transform: skew($containerSkew * -1);
+
+  @include transition(('transform', 'box-shadow'), 'short');
+
+  @include on-hover() {
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.5);
+    transform: skew($containerSkew * -1) translateY(1px);
+  }
+
+  @include on-focus() {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+    transform: skew($containerSkew * -1) translateY(2px);
+  }
+
+  @include on-active() {
+    box-shadow: none;
+    transform: skew($containerSkew * -1) translateY(3px);
+  }
 }
 
 .event__content {
