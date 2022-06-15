@@ -1,9 +1,12 @@
 import React from 'react'
 import 'normalize.css'
-import './styles/main.scss'
+import './styles/fonts.css'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './localization/i18n'
+import GlobalStyles from './styles/global'
+import { defaultTheme } from './styles/defaultTheme'
+import { ThemeProvider } from 'styled-components'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -11,6 +14,9 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={defaultTheme}>
+      <GlobalStyles />
+      <App />
+    </ThemeProvider>
   </React.StrictMode>
 )

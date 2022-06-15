@@ -1,12 +1,12 @@
 import React from 'react'
 import styles from './Events.module.scss'
-import Event, { EventProps } from '../Event/Event'
+import EventCard, { EventCardProps } from '../EventCard/EventCard'
 import { EventModes } from '../../typings/eventModes'
 import cn from 'classnames'
 
 const Events = () => {
 
-  const eventsData: EventProps[] = [
+  const eventsData: EventCardProps[] = [
     { title: 'MODE 1', description: 'map 1', gameMode: EventModes.GEM_GRAB },
     { title: 'MODE 2', description: 'map 2', gameMode: EventModes.BIG_GAME },
     { title: 'MODE 3', description: 'map 3', gameMode: EventModes.HEIST },
@@ -31,7 +31,7 @@ const Events = () => {
   const $eventList = eventsData.map(eventData => (
     <li key={`${eventData.title}_${eventData.description}`}
         className={styles.events__listItem}>
-      <Event
+      <EventCard
         title={eventData.title}
         description={eventData.description}
         gameMode={eventData.gameMode}

@@ -1,17 +1,17 @@
 import React from 'react'
-import styles from './Event.module.scss'
+import styles from './EventCard.module.scss'
 import defaultEventImage from '../../assets/img/map_23b.png'
 import { EventModes } from '../../typings/eventModes'
 import getGameModeData from './getGameModeData'
 
-export interface EventProps {
+export interface EventCardProps {
   title: string
   description: string
   gameMode: EventModes
   backgroundImagePath?: string
 }
 
-const Event: React.FC<EventProps> =
+const EventCard: React.FC<EventCardProps> =
   ({
      title,
      description,
@@ -46,4 +46,4 @@ const Event: React.FC<EventProps> =
     )
   }
 
-export default Event
+export default EventCard
