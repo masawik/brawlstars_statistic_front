@@ -18,7 +18,7 @@ export const Button = styled.button<IButtonProps>`
   z-index: 1;
   color: #fff;
   display: inline-block;
-  
+
   &::after {
     position: absolute;
     top: 0;
@@ -40,24 +40,26 @@ export const Button = styled.button<IButtonProps>`
 
       ${transition(
               t.transitionDurationMs.default,
-              ['background-color', 'transform', 'box-shadow']
+              ['background-color', 'box-shadow']
       )}
     `}
   }
 
   ${({ theme: t, color }) => css`
+    ${transition(t.transitionDurationMs.default, ['transform'])}
+
     ${onFocus`
+    transform: scale(0.98);
     &::after {
       background-color: ${t.color.types[color ?? 'primary'].darken};
-      transform: skewX(${buttonSkew * -1}deg) scale(0.98);
     }
   `}
 
     ${onActive`
+    transform: scale(0.98);
     &::after {
       background-color: ${t.color.types[color ?? 'primary'].darken};
       box-shadow: 1px 2px 0 0 rgb(0 0 0 / 80%), inset 0 1px 0 0 rgb(0 0 0 / 25%);
-      transform: skewX(${buttonSkew * -1}deg) scale(0.98);
     }
   `}
   `}

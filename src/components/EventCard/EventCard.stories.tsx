@@ -1,16 +1,38 @@
 import React from 'react'
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ComponentStory } from '@storybook/react'
-import EventCard from './EventCard'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { EventModes } from '../../typings/eventModes'
+import EventCardComponent from './EventCard'
 
-const Template: ComponentStory<typeof EventCard> =
-  (args) => (<EventCard {...args} />)
+export default {
+  title: 'EventCard',
+  component: EventCardComponent,
+  argTypes: {
+    title: {
+      name: 'title',
+      description: 'Game mode name',
+    },
+    description: {
+      name: 'description',
+      description: 'Map name',
+    },
+    gameMode: {
+      name: 'gameMode',
+      description: 'Game mode id',
+    },
+    backgroundImagePath: {
+      name: 'backgroundImagePath',
+      description: 'url to map poster',
+    },
+  },
+} as ComponentMeta<typeof EventCardComponent>
 
-export const Event = Template.bind({})
+const Template: ComponentStory<typeof EventCardComponent> = (args) =>
+  <EventCardComponent {...args} />
 
-Event.args = {
-  title: 'GEM GRAB',
-  description: 'map name',
+export const EventCard = Template.bind({})
+EventCard.args = {
+  title: 'GEM GRUB',
+  description: 'Map name',
   gameMode: EventModes.GEM_GRAB,
 }

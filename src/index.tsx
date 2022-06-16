@@ -1,6 +1,4 @@
 import React from 'react'
-import 'normalize.css'
-import './styles/fonts.css'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './localization/i18n'

@@ -1,7 +1,9 @@
 import { createGlobalStyle, css } from 'styled-components'
 import * as SP from './placeholders'
+import 'normalize.css'
+import './fonts.css'
 
-export default createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
   html {
     box-sizing: border-box;
   }
@@ -37,7 +39,7 @@ export default createGlobalStyle`
     font-size: 14px;
     ${({ theme }) => css`
       font-family: ${theme.fonts.primary};
-      color: ${theme.color.background};
+      color: ${theme.color.text};
       background-color: ${theme.color.background};
     `}
   }
@@ -53,3 +55,5 @@ export default createGlobalStyle`
     clip: rect(0, 0, 0, 0);
   }
 `
+
+export default GlobalStyles

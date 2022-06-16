@@ -62,3 +62,11 @@ export const background = (
   background-position: ${position};
   background-size: ${size};
 `
+
+export const textOverload = (lineCount: number = 1) => css`
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: ${lineCount};
+`

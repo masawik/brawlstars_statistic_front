@@ -15,7 +15,7 @@ const EventList = styled.ul`
 
 const Events = () => {
   const eventsData: EventCardProps[] = [
-    { title: 'MODE 1', description: 'map 1', gameMode: EventModes.GEM_GRAB },
+    { title: 'MODE 1 MODE 1 MODE 1 MODE 1 MODE 1 MODE 1 MODE 1 ', description: 'map 1 map 1 map 1 map 1 map 1 map 1 map 1 map 1 map 1 map 1 map 1 map 1 map 1 map 1 ', gameMode: EventModes.GEM_GRAB },
     { title: 'MODE 2', description: 'map 2', gameMode: EventModes.BIG_GAME },
     { title: 'MODE 3', description: 'map 3', gameMode: EventModes.HEIST },
     {

@@ -5,6 +5,7 @@ import getGameModeData from './getGameModeData'
 import styled, { css } from 'styled-components'
 import * as SM from '../../styles/mixins'
 import defaultGameModeIcon from '../../assets/img/game-modes/gift.png'
+import { textOverload } from '../../styles/mixins'
 
 export interface EventCardProps {
   title: string
@@ -13,15 +14,13 @@ export interface EventCardProps {
   backgroundImagePath?: string
 }
 
-const cardWidth = 260
 const containerSkew = 5 // in degs
 
 const CardContainer = styled.a`
   position: relative;
-  display: block;
+  display: inline-block;
   border-radius: 2px;
-  width: ${cardWidth}px;
-  height: ${cardWidth / 2.5}px;
+  width: 260px;
   overflow: hidden;
   box-shadow: 0 3px 0 rgba(0, 0, 0, 0.5);
   transform: skew(${containerSkew * -1}deg);
@@ -51,13 +50,9 @@ const CardContainer = styled.a`
 `
 
 const CardContent = styled.div`
-  position: absolute;
-  top: 0;
-  right: -10px;
-  bottom: 0;
-  left: -10px;
+  margin-left: -10px;
+  margin-right: -10px;
   transform: skew(${containerSkew}deg);
-  color: ${({ theme: { color: { text } } }) => text};
 `
 
 interface IEventInfoProps {
@@ -67,7 +62,7 @@ interface IEventInfoProps {
 
 const EventInfo = styled.div<IEventInfoProps>`
   padding: 5px 20px 0 70px;
-  height: 50%;
+  min-height: 55px;
   font-size: 18px;
   background-repeat: no-repeat;
   background-position: 20px center;
@@ -83,12 +78,14 @@ const EventInfo = styled.div<IEventInfoProps>`
 const EventTitle = styled.div`
   text-shadow: 0 2px #000;
   -webkit-text-stroke: 1.4px #000;
+  ${textOverload(1)}
 `
 
 const EventDescription = styled.div`
   font-size: 14px;
   text-shadow: 0 1px #000;
   -webkit-text-stroke: 0.8px #000;
+  ${textOverload(2)}
 `
 
 interface IImageContainerProps {
@@ -97,7 +94,7 @@ interface IImageContainerProps {
 
 const ImageContainer = styled.div<IImageContainerProps>`
   width: 100%;
-  height: 50%;
+  height: 55px;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -121,7 +118,7 @@ const EventCard: React.FC<EventCardProps> =
       getGameModeData(gameMode)
 
     return (
-      <CardContainer href='#'>
+      <CardContainer href='#' data-testid="12">
         <CardContent>
           <EventInfo
             backgroundColor={gameModeColor}
