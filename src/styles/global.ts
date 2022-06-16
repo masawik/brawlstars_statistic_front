@@ -37,8 +37,8 @@ export default createGlobalStyle`
     font-size: 14px;
     ${({ theme }) => css`
       font-family: ${theme.fonts.primary};
-      color: ${theme.backgroundColor};
-      background-color: ${theme.backgroundColor};
+      color: ${theme.color.background};
+      background-color: ${theme.color.background};
     `}
   }
 

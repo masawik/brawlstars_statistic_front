@@ -1,7 +1,11 @@
 import React from 'react'
-import styles from './LanguagePicker.module.scss'
 import { useTranslation } from 'react-i18next'
+import styled from 'styled-components'
 
+const LanguagePickerContainer = styled.div`
+  display: flex;
+  align-items: center;
+`
 
 const LanguagePicker = () => {
   const { i18n } = useTranslation()
@@ -19,11 +23,11 @@ const LanguagePicker = () => {
   })
 
   return (
-    <div className={styles.languagePicker}>
+    <LanguagePickerContainer>
       <select value={i18n.language} onChange={onSelect}>
         {$languageOptions}
       </select>
-    </div>
+    </LanguagePickerContainer>
   )
 }
 

@@ -1,8 +1,26 @@
 import 'styled-components'
 
+type TColorType = {
+  normal: string,
+  darken: string
+}
+
+export type TColorTypes = {
+  primary: TColorType,
+  success: TColorType,
+  danger: TColorType,
+  warning: TColorType
+}
+
 declare module 'styled-components' {
   export interface DefaultTheme {
-    colors: { [key: string]: string },
+    palette: { [key: string]: string },
+    color: {
+      background: string,
+      text: string,
+      header: string,
+      types: TColorTypes
+    }
     transitionDurationMs: {
       short: number,
       default: number,
@@ -14,7 +32,5 @@ declare module 'styled-components' {
       inGame: string,
       inGameSerif: string
     },
-    backgroundColor: string,
-    textColor: string
   }
 }

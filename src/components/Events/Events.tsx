@@ -1,11 +1,19 @@
 import React from 'react'
-import styles from './Events.module.scss'
 import EventCard, { EventCardProps } from '../EventCard/EventCard'
 import { EventModes } from '../../typings/eventModes'
-import cn from 'classnames'
+import styled from 'styled-components'
+import { placeholder } from '../../styles/placeholders'
+import { Container } from '../UI/Container'
+
+const EventList = styled.ul`
+  display: grid;
+  row-gap: 20px;
+  justify-items: center;
+
+  ${placeholder('resetList')}
+`
 
 const Events = () => {
-
   const eventsData: EventCardProps[] = [
     { title: 'MODE 1', description: 'map 1', gameMode: EventModes.GEM_GRAB },
     { title: 'MODE 2', description: 'map 2', gameMode: EventModes.BIG_GAME },
@@ -29,8 +37,7 @@ const Events = () => {
   ]
 
   const $eventList = eventsData.map(eventData => (
-    <li key={`${eventData.title}_${eventData.description}`}
-        className={styles.events__listItem}>
+    <li key={`${eventData.title}_${eventData.description}`}>
       <EventCard
         title={eventData.title}
         description={eventData.description}
@@ -40,12 +47,12 @@ const Events = () => {
   ))
 
   return (
-    <section className={styles.events}>
-      <div className='container'>
-        <ul className={cn(styles.events__list, 'reset')}>
+    <section>
+      <Container>
+        <EventList>
           {$eventList}
-        </ul>
-      </div>
+        </EventList>
+      </Container>
     </section>
   )
 }

@@ -25,7 +25,7 @@ const colors = {
 }
 
 const defaultTheme: DefaultTheme = {
-  colors: colors,
+  palette: colors,
   transitionDurationMs: {
     short: 50,
     default: 100,
@@ -37,8 +37,29 @@ const defaultTheme: DefaultTheme = {
     inGame: '"Lilita One", Helvetica, Arial, sans-serif',
     inGameSerif: '"Nougat", Georgia, serif',
   },
-  backgroundColor: colors.biscay,
-  textColor: colors.white,
+  color: {
+    background: colors.biscay,
+    text: colors.white,
+    header: colors.denim,
+    types: {
+      primary: {
+        normal: colors.mariner,
+        darken: colors.denim,
+      },
+      success: {
+        normal: colors.malachite,
+        darken: colors.japaneseLaurel,
+      },
+      danger: {
+        normal: colors.crimson,
+        darken: colors.cardinal,
+      },
+      warning: {
+        normal: colors.lightningYellow,
+        darken: colors.flamenco,
+      },
+    },
+  },
 }
 
 export { defaultTheme }

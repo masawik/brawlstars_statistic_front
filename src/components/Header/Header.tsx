@@ -1,25 +1,42 @@
 import React from 'react'
-import logoSVG from '../../assets/img/logo-star.png'
-import styles from './Header.module.scss'
+import logoIcon from '../../assets/img/logo-star.png'
 import LanguagePicker from './LanguagePicker/LanguagePicker'
-import cn from 'classnames'
+import styled, { css } from 'styled-components'
+import { Container } from '../UI/Container'
+import { Link } from '../UI/Link'
+
+const HeaderContainer = styled.div`
+  margin-bottom: 15px;
+
+  ${({ theme }) => css`
+    background-color: ${theme.color.header};
+  `}
+`
+
+const HeaderContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+`
+
+const LogoLink = styled(Link).attrs({ type: 'icon' })`
+  width: 50px;
+  height: 50px;
+`
 
 const Header = () => {
   return (
-    <div className={styles.header}>
-      <div className='container'>
-        <div className={styles.header__content}>
-          <a
-            className={cn(styles.header__logoLink, 'link', 'link--icon')}
-            href='#'
-          >
-            <img src={logoSVG} alt='brawl stars logo' />
-          </a>
+    <HeaderContainer>
+      <Container>
+        <HeaderContent>
+          <LogoLink href='#'>
+            <img src={logoIcon} alt='brawl stars logo' />
+          </LogoLink>
 
           <LanguagePicker />
-        </div>
-      </div>
-    </div>
+        </HeaderContent>
+      </Container>
+    </HeaderContainer>
   )
 }
 

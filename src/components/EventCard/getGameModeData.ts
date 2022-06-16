@@ -1,5 +1,4 @@
 import { EventModes } from '../../typings/eventModes'
-import defaultGameModeIcon from '../../assets/img/game-modes/gift.png'
 import gemGrabIcon from '../../assets/img/game-modes/gemGrab.png'
 import basketBrawlIcon from '../../assets/img/game-modes/basketball.png'
 import bigGameIcon from '../../assets/img/game-modes/big-game.png'
@@ -20,16 +19,13 @@ import takedownIcon from '../../assets/img/game-modes/takedown.png'
 import volleyBrawlIcon from '../../assets/img/game-modes/volley-brawl.png'
 
 type GameModeViewData = {
-  gameModeColor: string,
-  gameModeIconPath: string
+  gameModeColor?: string,
+  gameModeIconPath?: string
 }
 
 const getGameModeData =
   (gameMode: EventModes): GameModeViewData => {
-    const result: GameModeViewData = {
-      gameModeColor: '#9a3cf2',
-      gameModeIconPath: defaultGameModeIcon,
-    }
+    const result: GameModeViewData = {}
 
     switch (gameMode) {
       case EventModes.GEM_GRAB:
