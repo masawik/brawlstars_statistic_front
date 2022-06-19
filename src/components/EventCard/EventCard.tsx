@@ -118,13 +118,13 @@ const EventCard: React.FC<EventCardProps> =
       getGameModeData(gameMode)
 
     return (
-      <CardContainer href='#' data-testid="12">
+      <CardContainer href='#' data-testid='12'>
         <CardContent>
           <EventInfo
             backgroundColor={gameModeColor}
             icon={gameModeIconPath}
           >
-            <EventTitle>{title}</EventTitle>
+            <EventTitle>{title.toUpperCase()}</EventTitle>
             <EventDescription>{description}</EventDescription>
           </EventInfo>
 
