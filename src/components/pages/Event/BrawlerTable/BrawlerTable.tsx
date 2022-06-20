@@ -10,11 +10,10 @@ import {
   SortingState,
   useTableInstance,
 } from '@tanstack/react-table'
-import { Container } from '../UI/Container'
 import BrawlerCard from './BrawlerCard/BrawlerCard'
-import defaultBrawlerImage from '../../assets/img/brawlers/28000011.png'
-import { TColorTypes } from '../../styles/styled'
+import defaultBrawlerImage from '../../../../assets/img/brawlers/28000011.png'
 import { SortBtn, Table, TableHeadRow } from './BrawlerTable.styles'
+import { TColorTypes } from '../../../../styles/styled'
 
 // ---- types ----
 type BrawlerStatistic = {
@@ -164,12 +163,10 @@ function BrawlerTable() {
   )
 
   return (
-    <Container>
-      <Table>
-        {$Thead}
-        {$TBody}
-      </Table>
-    </Container>
+    <Table>
+      {$Thead}
+      {$TBody}
+    </Table>
   )
 }
 

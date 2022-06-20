@@ -1,22 +1,24 @@
 import React from 'react'
-import defaultEventImage from '../../assets/img/map_23b.png'
-import { EventModes } from '../../typings/eventModes'
+import defaultEventImage from '../../../../../assets/img/map_23b.png'
+import { EventModes } from '../../../../../typings/eventModes'
 import getGameModeData from './getGameModeData'
 import styled, { css } from 'styled-components'
-import * as SM from '../../styles/mixins'
-import defaultGameModeIcon from '../../assets/img/game-modes/gift.png'
-import { textOverload } from '../../styles/mixins'
+import * as SM from '../../../../../styles/mixins'
+import defaultGameModeIcon from '../../../../../assets/img/game-modes/gift.png'
+import { textOverload } from '../../../../../styles/mixins'
+import { Link } from 'react-router-dom'
 
 export interface EventCardProps {
   title: string
   description: string
   gameMode: EventModes
   backgroundImagePath?: string
+  eventId: number
 }
 
 const containerSkew = 5 // in degs
 
-const CardContainer = styled.a`
+const CardContainer = styled(Link)`
   position: relative;
   display: inline-block;
   border-radius: 2px;
@@ -111,6 +113,7 @@ const EventCard: React.FC<EventCardProps> =
      title,
      description,
      gameMode,
+     eventId,
      backgroundImagePath = defaultEventImage,
    }) => {
 
@@ -118,7 +121,7 @@ const EventCard: React.FC<EventCardProps> =
       getGameModeData(gameMode)
 
     return (
-      <CardContainer href='#' data-testid='12'>
+      <CardContainer to={`/event/${eventId}`} data-testid='12'>
         <CardContent>
           <EventInfo
             backgroundColor={gameModeColor}

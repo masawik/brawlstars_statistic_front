@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Link } from '../UI/Link'
+import { Link } from '../../../UI/Link'
 
 export const Table = styled.table`
   width: 100%;

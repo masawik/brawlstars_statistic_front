@@ -1,7 +1,7 @@
 import React from 'react'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { EventModes } from '../../typings/eventModes'
+import { EventModes } from '../../../../../typings/eventModes'
 import EventCardComponent from './EventCard'
 
 export default {

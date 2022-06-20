@@ -1,29 +1,48 @@
 import React from 'react'
-import EventCard, { EventCardProps } from '../../../EventCard/EventCard'
+import EventCard, { EventCardProps } from './EventCard/EventCard'
 import { EventModes } from '../../../../typings/eventModes'
 import styled from 'styled-components'
 import { placeholder } from '../../../../styles/placeholders'
 
 const eventsData: EventCardProps[] = [
   {
+    eventId: 1,
     title: 'MODE 1 MODE 1 MODE 1 MODE 1 MODE 1 MODE 1 MODE 1 ',
     description: 'map 1 map 1 map 1 map 1 map 1 map 1 map 1 map 1 map 1 map 1 map 1 map 1 map 1 map 1 ',
     gameMode: EventModes.GEM_GRAB,
   },
-  { title: 'MODE 2', description: 'map 2', gameMode: EventModes.BIG_GAME },
-  { title: 'MODE 3', description: 'map 3', gameMode: EventModes.HEIST },
   {
+    eventId: 2,
+    title: 'MODE 2',
+    description: 'map 2',
+    gameMode: EventModes.BIG_GAME,
+  },
+  {
+    eventId: 3,
+    title: 'MODE 3',
+    description: 'map 3',
+    gameMode: EventModes.HEIST,
+  },
+  {
+    eventId: 4,
     title: 'MODE 4',
     description: 'map 4',
     gameMode: EventModes.DUO_SHOWDOWN,
   },
-  { title: 'MODE 5', description: 'map 5', gameMode: EventModes.TAKEDOWN },
   {
+    eventId: 5,
+    title: 'MODE 5',
+    description: 'map 5',
+    gameMode: EventModes.TAKEDOWN,
+  },
+  {
+    eventId: 6,
     title: 'MODE 6',
     description: 'map 6',
     gameMode: EventModes.SUPER_CITY_RAMPAGE,
   },
   {
+    eventId: 7,
     title: 'MODE 7',
     description: 'map 7',
     gameMode: EventModes.PRESENT_PLUNDER,
@@ -46,6 +65,7 @@ const EventList = () => {
         title={eventData.title}
         description={eventData.description}
         gameMode={eventData.gameMode}
+        eventId={eventData.eventId}
       />
     </li>
   ))

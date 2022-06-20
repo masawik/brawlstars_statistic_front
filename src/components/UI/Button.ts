@@ -2,12 +2,14 @@ import styled, { css } from 'styled-components'
 import { onActive, onFocus, transition } from '../../styles/mixins'
 import { TColorTypes } from '../../styles/styled'
 import { placeholder } from '../../styles/placeholders'
+import { To } from 'react-router-dom'
 
 const buttonSkew = 7 //deg
 
 interface IButtonProps {
   as?: string
   color?: keyof TColorTypes
+  to?: To
 }
 
 export const Button = styled.button<IButtonProps>`

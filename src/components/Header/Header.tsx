@@ -3,7 +3,8 @@ import logoIcon from '../../assets/img/logo-star.png'
 import LanguagePicker from './LanguagePicker/LanguagePicker'
 import styled, { css } from 'styled-components'
 import { Container } from '../UI/Container'
-import { Link } from '../UI/Link'
+import { Link as StyledLink } from '../UI/Link'
+import { NavLink } from 'react-router-dom'
 
 const HeaderContainer = styled.div`
   margin-bottom: 15px;
@@ -19,7 +20,7 @@ const HeaderContent = styled.div`
   padding: 5px 0;
 `
 
-const LogoLink = styled(Link).attrs({ type: 'icon' })`
+const LogoLink = styled(StyledLink).attrs({ type: 'icon', as: NavLink })`
   width: 50px;
   height: 50px;
 `
@@ -29,7 +30,7 @@ const Header = () => {
     <HeaderContainer>
       <Container>
         <HeaderContent>
-          <LogoLink href='#'>
+          <LogoLink to='/' href='#'>
             <img src={logoIcon} alt='brawl stars logo' />
           </LogoLink>
 

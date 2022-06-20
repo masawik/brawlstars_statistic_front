@@ -2,11 +2,14 @@ import styled, { css } from 'styled-components'
 import { onActive, onFocus, onHover, transition } from '../../styles/mixins'
 import { TColorTypes } from '../../styles/styled'
 import { placeholder } from '../../styles/placeholders'
+import React from 'react'
+import { To } from 'react-router-dom'
 
 interface ILinkProps {
-  as?: string
+  as?: string | React.ReactNode
   type?: 'text' | 'icon'
   color?: keyof TColorTypes
+  to?: To
 }
 
 export const Link = styled.a<ILinkProps>`
