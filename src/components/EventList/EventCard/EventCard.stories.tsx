@@ -1,8 +1,9 @@
 import React from 'react'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { EventModes } from '../../../../../typings/eventModes'
 import EventCardComponent from './EventCard'
+import gameModeIcon from '../../../assets/img/game-modes/gemGrab.png'
+import mapImage from '../../../assets/img/map_23b.png'
 
 export default {
   title: 'EventCard',
@@ -20,7 +21,7 @@ export default {
       name: 'gameMode',
       description: 'Game mode id',
     },
-    backgroundImagePath: {
+    mapImageUrl: {
       name: 'backgroundImagePath',
       description: 'url to map poster',
     },
@@ -32,7 +33,12 @@ const Template: ComponentStory<typeof EventCardComponent> = (args) =>
 
 export const EventCard = Template.bind({})
 EventCard.args = {
-  title: 'GEM GRUB',
-  description: 'Map name',
-  gameMode: EventModes.GEM_GRAB,
+  eventData: {
+    id: 1,
+    gameMode: 'GEM GRAB',
+    gameModeColor: '#fff',
+    mapName: 'map name',
+    gameModeIconUrl: gameModeIcon,
+    mapImageUrl: mapImage,
+  },
 }

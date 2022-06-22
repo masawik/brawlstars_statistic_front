@@ -1,24 +1,13 @@
-import React from 'react'
-import defaultEventImage from '../../../../../assets/img/map_23b.png'
-import { EventModes } from '../../../../../typings/eventModes'
-import getGameModeData from './getGameModeData'
 import styled, { css } from 'styled-components'
-import * as SM from '../../../../../styles/mixins'
-import defaultGameModeIcon from '../../../../../assets/img/game-modes/gift.png'
-import { textOverload } from '../../../../../styles/mixins'
 import { Link } from 'react-router-dom'
-
-export interface EventCardProps {
-  title: string
-  description: string
-  gameMode: EventModes
-  backgroundImagePath?: string
-  eventId: number
-}
+import * as SM from '../../../styles/mixins'
+import defaultGameModeIcon from '../../../assets/img/game-modes/gift.png'
+import { textOverload } from '../../../styles/mixins'
+import defaultEventImage from '../../../assets/img/map_23b.png'
 
 const containerSkew = 5 // in degs
 
-const CardContainer = styled(Link)`
+export const EventCardContainer = styled(Link)`
   position: relative;
   display: inline-block;
   border-radius: 2px;
@@ -51,7 +40,7 @@ const CardContainer = styled(Link)`
   `}
 `
 
-const CardContent = styled.div`
+export const EventCardContent = styled.div`
   margin-left: -10px;
   margin-right: -10px;
   transform: skew(${containerSkew}deg);
@@ -62,7 +51,7 @@ interface IEventInfoProps {
   icon?: string
 }
 
-const EventInfo = styled.div<IEventInfoProps>`
+export const EventCardInfo = styled.div<IEventInfoProps>`
   padding: 5px 20px 0 70px;
   min-height: 55px;
   font-size: 18px;
@@ -77,24 +66,24 @@ const EventInfo = styled.div<IEventInfoProps>`
   `}
 `
 
-const EventTitle = styled.div`
+export const EventCardTitle = styled.div`
   text-shadow: 0 2px #000;
   -webkit-text-stroke: 1.4px #000;
   ${textOverload(1)}
 `
 
-const EventDescription = styled.div`
+export const EventCardDescription = styled.div`
   font-size: 14px;
   text-shadow: 0 1px #000;
   -webkit-text-stroke: 0.8px #000;
   ${textOverload(2)}
 `
 
-interface IImageContainerProps {
+interface IEventCardImageContainerProps {
   image?: string
 }
 
-const ImageContainer = styled.div<IImageContainerProps>`
+export const EventCardImageContainer = styled.div<IEventCardImageContainerProps>`
   width: 100%;
   height: 55px;
   background-repeat: no-repeat;
@@ -107,34 +96,3 @@ const ImageContainer = styled.div<IImageContainerProps>`
     background-image: url(${image ?? defaultEventImage});
   `}
 `
-
-const EventCard: React.FC<EventCardProps> =
-  ({
-     title,
-     description,
-     gameMode,
-     eventId,
-     backgroundImagePath = defaultEventImage,
-   }) => {
-
-    const { gameModeIconPath, gameModeColor } =
-      getGameModeData(gameMode)
-
-    return (
-      <CardContainer to={`/event/${eventId}`} data-testid='12'>
-        <CardContent>
-          <EventInfo
-            backgroundColor={gameModeColor}
-            icon={gameModeIconPath}
-          >
-            <EventTitle>{title.toUpperCase()}</EventTitle>
-            <EventDescription>{description}</EventDescription>
-          </EventInfo>
-
-          <ImageContainer image={backgroundImagePath} />
-        </CardContent>
-      </CardContainer>
-    )
-  }
-
-export default EventCard
