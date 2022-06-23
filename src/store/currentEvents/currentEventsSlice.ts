@@ -23,6 +23,4 @@ const currentEventsSlice = createSlice({
 })
 
 export const currentEventsActions = currentEventsSlice.actions
-
-const currentEventsReducer = currentEventsSlice.reducer
-export { currentEventsReducer }
+export const currentEventsReducer = currentEventsSlice.reducer

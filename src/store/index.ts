@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { currentEventsReducer } from './currentEvents/currentEventsSlice'
+import { eventStatisticReducer } from './eventStatistic/eventStatisticSlice'
 
 export const store = configureStore({
   reducer: {
     currentEvents: currentEventsReducer,
+    eventStatistic: eventStatisticReducer,
   },
 })
 

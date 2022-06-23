@@ -1,8 +1,9 @@
 import gameModeIcon from '../../assets/img/game-modes/gemGrab.png'
 import mapImage from '../../assets/img/map_23b.png'
+import brawlerImage from '../../assets/img/brawlers/28000011.png'
 import { random } from 'lodash'
 import { CApi } from './IApi'
-import { ICurrentEventDataRaw } from '../../types/eventData'
+import { IEventStatistic, ICurrentEventDataRaw } from '../../types/eventData'
 
 const currentEventsData: ICurrentEventDataRaw[] = [
   {
@@ -13,7 +14,56 @@ const currentEventsData: ICurrentEventDataRaw[] = [
     mapImageUrl: mapImage,
     endTime: '2022-07-23T01:39:33.775Z',
   },
+  {
+    id: 2,
+    gameMode: 'GEM GRAB',
+    mapName: 'map name 2',
+    gameModeIconUrl: gameModeIcon,
+    mapImageUrl: mapImage,
+    endTime: '2022-08-23T01:39:33.775Z',
+  },
 ]
+
+const eventsStatisticData: { [key: IEventStatistic['eventId']]: IEventStatistic } = {
+  1: {
+    eventId: 1,
+    statistic: [
+      {
+        name: 'Penny',
+        imageUrl: brawlerImage,
+        games: 100,
+        victories: 50,
+        winRate: 50,
+      },
+      {
+        name: 'Rico',
+        imageUrl: brawlerImage,
+        games: 100,
+        victories: 60,
+        winRate: 60,
+      },
+    ],
+  },
+  2: {
+    eventId: 2,
+    statistic: [
+      {
+        name: 'Mike',
+        imageUrl: brawlerImage,
+        games: 500,
+        victories: 50,
+        winRate: 10,
+      },
+      {
+        name: 'Lue',
+        imageUrl: brawlerImage,
+        games: 1000,
+        victories: 400,
+        winRate: 40,
+      },
+    ],
+  },
+}
 
 class FakeApi extends CApi {
   getCurrentEvents = (): Promise<ICurrentEventDataRaw[]> => {
@@ -21,6 +71,14 @@ class FakeApi extends CApi {
       setTimeout(() => {
         resolve(currentEventsData)
       }, random(500, 2000))
+    }))
+  }
+
+  getBrawlersStatisticByEventId = (eventId: number): Promise<IEventStatistic> => {
+    return new Promise((resolve => {
+      setTimeout(() => {
+        resolve(eventsStatisticData[eventId])
+      }, random(1000, 2000))
     }))
   }
 }

@@ -1,3 +1,5 @@
+import { IBrawlerStatisticData } from './brawlerData'
+
 export interface IEventData {
   id: number
   gameMode: string
@@ -13,4 +15,9 @@ export interface ICurrentEventDataRaw extends IEventData {
 
 export interface EventData extends IEventData {
   endTime: number
+}
+
+export interface IEventStatistic {
+  eventId: number,
+  statistic: IBrawlerStatisticData[]
 }

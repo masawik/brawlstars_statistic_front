@@ -36,7 +36,7 @@ const CurrentEvents = () => {
         (
           currentEvents.length
             ? <EventList events={currentEvents} />
-            : 'no event data'
+            : 'no eventStatistic data'
         )}
       </Container>
     </section>
