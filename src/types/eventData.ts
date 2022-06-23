@@ -7,6 +7,10 @@ export interface IEventData {
   mapImageUrl?: string
 }
 
-export interface ICurrentEventData extends IEventData {
+export interface ICurrentEventDataRaw extends IEventData {
   endTime: string
+}
+
+export interface EventData extends IEventData {
+  endTime: number
 }

@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Container } from '../../UI/Container'
 import EventList from '../../EventList/EventList'
 import styled from 'styled-components'
 import Loader from '../../UI/Loader'
-import Api from '../../../packages/api'
-import { IEventData } from '../../../types/event'
+import { useAppSelector } from '../../../hooks/useAppSelector'
+import {
+  selectCurrentEvents,
+  selectCurrentEventsFetching,
+} from '../../../store/currentEvents/currentEventsSelectors'
+import { useAppDispatch } from '../../../hooks/useAppDispatch'
+import { getCurrentEvents } from '../../../store/currentEvents/currentEventsAsyncActions'
 
 const Title = styled.h1`
   margin-bottom: 20px;
@@ -12,30 +17,25 @@ const Title = styled.h1`
 `
 
 const CurrentEvents = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [eventsData, setEventsData] = useState<IEventData[]>([])
+  const isFetching = useAppSelector(selectCurrentEventsFetching)
+  const currentEvents = useAppSelector(selectCurrentEvents)
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
-    setIsLoading(true)
-
-    Api
-      .getCurrentEvents()
-      .then(data => {
-        setEventsData(data)
-        setIsLoading(false)
-      })
+    if (currentEvents.length !== 0) return
+    dispatch(getCurrentEvents())
   }, [])
 
   return (
     <section>
       <Container>
         <Title>Current events</Title>
-        {isLoading && <Loader />}
+        {isFetching && <Loader />}
 
-        {!isLoading &&
+        {!isFetching &&
         (
-          eventsData.length
-            ? <EventList events={eventsData} />
+          currentEvents.length
+            ? <EventList events={currentEvents} />
             : 'no event data'
         )}
       </Container>

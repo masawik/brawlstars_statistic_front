@@ -1,5 +1,7 @@
-import { ICurrentEventData } from '../../types/event'
+import {
+  ICurrentEventDataRaw,
+} from '../../types/eventData'
 
 export abstract class CApi {
-  abstract getCurrentEvents(): Promise<ICurrentEventData[]>
+  abstract getCurrentEvents(): Promise<ICurrentEventDataRaw[]>
 }

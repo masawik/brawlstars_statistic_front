@@ -1,3 +1,5 @@
 import * as currentEvents from './adapters/currentEvents'
 
-export { currentEvents }
+const methods = { currentEvents }
+
+export default methods

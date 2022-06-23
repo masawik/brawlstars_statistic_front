@@ -4,7 +4,7 @@ import {
   EventCardContent, EventCardDescription, EventCardImageContainer,
   EventCardInfo, EventCardTitle,
 } from './EventCard.styles'
-import { IEventData } from '../../../types/event'
+import { IEventData } from '../../../types/eventData'
 
 export interface EventCardProps {
   eventData: IEventData

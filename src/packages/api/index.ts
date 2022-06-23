@@ -1,3 +1,3 @@
 import FakeApi from './FakeApi'
 
-export default FakeApi
+export { FakeApi as Api }

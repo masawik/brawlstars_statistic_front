@@ -2,7 +2,7 @@ import React from 'react'
 import EventCard from './EventCard/EventCard'
 import styled from 'styled-components'
 import { placeholder } from '../../styles/placeholders'
-import { IEventData } from '../../types/event'
+import { IEventData } from '../../types/eventData'
 
 const EventListUl = styled.ul`
   display: grid;
