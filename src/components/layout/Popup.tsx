@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components'
 import { Container } from './Container'
 import { Button } from '../UI/Button'
 import { useClickOutside } from '../../hooks/useClickOutside'
+import closeButtonIcon from '../../assets/img/button_close.png'
 
 const Wrapper = styled.div`
   position: fixed;
@@ -15,7 +16,6 @@ const Wrapper = styled.div`
   left: 0;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 100;
-  cursor: pointer;
 
   & > div {
     width: 100%;
@@ -43,10 +43,18 @@ const PopupHeader = styled.div`
   `}
 `
 
-const CloseButton = styled(Button).attrs({ color: 'danger' })`
+const CloseButton = styled(Button).attrs({
+  color: 'danger',
+  backgroundIcon: {
+    url: closeButtonIcon,
+    size: '20px',
+  },
+})`
   position: absolute;
   right: -5px;
   top: -5px;
+  height: 30px;
+  width: 30px;
 `
 
 const PopupBody = styled.div`
@@ -103,7 +111,8 @@ const Popup: React.FC<IPopupProps> =
               {title}
 
               <CloseButton aria-label='close window'
-                           onClick={onClose}>X</CloseButton>
+                           onClick={onClose}
+              />
             </PopupHeader>
 
             <PopupBody>{children}</PopupBody>

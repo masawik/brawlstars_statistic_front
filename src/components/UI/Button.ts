@@ -3,6 +3,7 @@ import { onActive, onFocus, transition } from '../../styles/mixins'
 import { TColorTypes } from '../../styles/styled'
 import { placeholder } from '../../styles/placeholders'
 import { To } from 'react-router-dom'
+import { CSSProperties } from 'react'
 
 const buttonSkew = 7 //deg
 
@@ -10,6 +11,11 @@ interface IButtonProps {
   as?: string
   color?: keyof TColorTypes
   to?: To
+  backgroundIcon?: {
+    url: string,
+    position?: CSSProperties['backgroundPosition'],
+    size?: keyof CSSProperties['backgroundSize']
+  }
 }
 
 export const Button = styled.button<IButtonProps>`
@@ -36,6 +42,12 @@ export const Button = styled.button<IButtonProps>`
     transform: skewX(${buttonSkew * -1}deg);
     content: '';
 
+    ${({ backgroundIcon }) => backgroundIcon && css`
+      background-image: url(${backgroundIcon.url});
+      background-position: ${backgroundIcon.position ?? 'center center'};
+      background-size: ${backgroundIcon.size ?? 'contain'};
+      background-repeat: no-repeat;
+    `}
 
     ${({ theme: t, color }) => css`
       background-color: ${t.color.types[color ?? 'primary'].normal};
