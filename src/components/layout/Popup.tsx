@@ -4,6 +4,7 @@ import { Container } from './Container'
 import { Button } from '../UI/Button'
 import { useClickOutside } from '../../hooks/useClickOutside'
 import closeButtonIcon from '../../assets/img/button_close.png'
+import Portal from './Portal'
 
 const Wrapper = styled.div`
   position: fixed;
@@ -15,7 +16,6 @@ const Wrapper = styled.div`
   bottom: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.4);
-  z-index: 100;
 
   & > div {
     width: 100%;
@@ -26,7 +26,6 @@ const PopupContainer = styled.div`
   width: 100%;
   max-width: 400px;
   border: 1px solid rgba(0, 0, 0, 0.5);
-  z-index: 110;
 `
 
 const PopupHeader = styled.div`
@@ -104,23 +103,25 @@ const Popup: React.FC<IPopupProps> =
     }, [onClose, isClickedOutside])
 
     return (
-      <Wrapper>
-        <Container>
-          <PopupContainer ref={popupWindowRef}>
-            <PopupHeader>
-              {title}
+      <Portal>
+        <Wrapper>
+          <Container>
+            <PopupContainer ref={popupWindowRef}>
+              <PopupHeader>
+                {title}
 
-              <CloseButton aria-label='close window'
-                           onClick={onClose}
-              />
-            </PopupHeader>
+                <CloseButton aria-label='close window'
+                             onClick={onClose}
+                />
+              </PopupHeader>
 
-            <PopupBody>{children}</PopupBody>
+              <PopupBody>{children}</PopupBody>
 
 
-          </PopupContainer>
-        </Container>
-      </Wrapper>
+            </PopupContainer>
+          </Container>
+        </Wrapper>
+      </Portal>
     )
   }
 
