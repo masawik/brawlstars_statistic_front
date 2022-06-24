@@ -1,6 +1,6 @@
-import React from 'react'
+import React  from 'react'
 import CurrentEvents from './components/pages/CurrentEvents/CurrentEvents'
-import Layout from './components/Layout'
+import Layout from './components/layout/Layout'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import NotFound from './components/pages/NotFound'
 import Event from './components/pages/Event/Event'

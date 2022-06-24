@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Container } from '../../UI/Container'
+import { Container } from '../../layout/Container'
 import EventList from '../../EventList/EventList'
 import styled from 'styled-components'
 import Loader from '../../UI/Loader'

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { Container } from '../../UI/Container'
+import { Container } from '../../layout/Container'
 import BrawlerTable from './BrawlerTable/BrawlerTable'
 import { useAppSelector } from '../../../hooks/useAppSelector'
 import { useAppDispatch } from '../../../hooks/useAppDispatch'
