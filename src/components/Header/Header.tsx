@@ -5,6 +5,7 @@ import styled, { css } from 'styled-components'
 import { Container } from '../UI/Container'
 import { Link as StyledLink } from '../UI/Link'
 import { NavLink } from 'react-router-dom'
+import { media } from '../../styles/mixins'
 
 const HeaderContainer = styled.div`
   margin-bottom: 15px;
@@ -23,6 +24,16 @@ const HeaderContent = styled.div`
 const LogoLink = styled(StyledLink).attrs({ type: 'icon', as: NavLink })`
   width: 50px;
   height: 50px;
+  
+  ${media('md')`
+    width: 65px;
+    height: 65px;
+  `}
+
+  ${media('lg')`
+    width: 80px;
+    height: 80px;
+  `}
 `
 
 const Header = () => {

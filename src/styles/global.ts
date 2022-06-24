@@ -2,6 +2,7 @@ import { createGlobalStyle, css } from 'styled-components'
 import * as SP from './placeholders'
 import 'normalize.css'
 import './fonts.css'
+import { media } from './mixins'
 
 const GlobalStyles = createGlobalStyle`
   html {
@@ -33,14 +34,16 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    //  todo убрать
-    padding-bottom: 100px;
     min-width: 320px;
     font-size: 14px;
     ${({ theme }) => css`
       font-family: ${theme.fonts.primary};
       color: ${theme.color.text};
       background-color: ${theme.color.background};
+    `}
+    
+    ${media('md')`
+        font-size: 16px;
     `}
   }
 
