@@ -3,7 +3,7 @@ import logoIcon from '../../assets/img/logo-star.png'
 import LanguagePicker from './LanguagePicker/LanguagePicker'
 import styled, { css } from 'styled-components'
 import { Container } from '../layout/Container'
-import { Link as StyledLink } from '../UI/Link'
+import { ILinkProps, Link as StyledLink } from '../UI/Link'
 import { NavLink } from 'react-router-dom'
 import { media } from '../../styles/mixins'
 
@@ -18,13 +18,23 @@ const HeaderContainer = styled.div`
 const HeaderContent = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 5px 0;
 `
 
-const LogoLink = styled(StyledLink).attrs({ type: 'icon', as: NavLink })`
+
+const logoLinkAttrs: ILinkProps = {
+  as: NavLink,
+  linkType: 'icon',
+}
+const LogoLink = styled(StyledLink).withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    !['linkType'].includes(prop)
+    && defaultValidatorFn(prop),
+}).attrs(logoLinkAttrs)`
   width: 50px;
   height: 50px;
-  
+
   ${media('md')`
     width: 65px;
     height: 65px;

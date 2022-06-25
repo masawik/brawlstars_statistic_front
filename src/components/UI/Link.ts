@@ -5,15 +5,15 @@ import { placeholder } from '../../styles/placeholders'
 import React from 'react'
 import { To } from 'react-router-dom'
 
-interface ILinkProps {
-  as?: string | React.ReactNode
-  type?: 'text' | 'icon'
+export interface ILinkProps {
+  as?: string | React.ReactNode | unknown
+  linkType?: 'text' | 'icon'
   color?: keyof TColorTypes
   to?: To
 }
 
 export const Link = styled.a<ILinkProps>`
-  ${({ theme: t, type, color, as }) => css`
+  ${({ theme: t, linkType, color, as }) => css`
     ${as === 'button' && placeholder('resetBtn')};
     color: ${t.color.types[color ?? 'warning'].normal};
 
@@ -22,9 +22,9 @@ export const Link = styled.a<ILinkProps>`
     ${onActive`color: ${t.color.types[color ?? 'warning'].darken};`}
     ${transition(t.transitionDurationMs.long, ['color'])}
 
-    ${(type === 'text' || !type) && css`text-shadow: 1px 1px 0 #000;`}
+    ${(linkType === 'text' || !linkType) && css`text-shadow: 1px 1px 0 #000;`}
 
-    ${type === 'icon' && css`
+    ${linkType === 'icon' && css`
       display: inline-block;
 
       ${transition(t.transitionDurationMs.long, ['transform'])}

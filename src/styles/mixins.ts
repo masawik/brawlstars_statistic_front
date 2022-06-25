@@ -46,6 +46,11 @@ export const transition = (
   transition-timing-function: ${animation};
 `
 
+export const elementSize = (width: number, height?: number) => css`
+  width: ${width}px;
+  height: ${height ?? width}px;
+`
+
 export const media = (breakPoint: keyof typeof breakPoints): TTaggedHelper =>
   (styles, ...args) => css`
     @media all and (min-width: ${breakPoints[breakPoint]}px) {
