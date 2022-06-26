@@ -3,6 +3,7 @@ import { Container } from '../layout/Container'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Button } from '../UI/Button'
+import { useTranslation } from 'react-i18next'
 
 const NotFoundContainer = styled.div`
   display: flex;
@@ -16,11 +17,13 @@ const BackHomeLink = styled(Button).attrs({ as: Link, color: 'success' })`
 `
 
 const NotFound = () => {
+  const { t } = useTranslation('notFound')
+
   return (
     <Container>
       <NotFoundContainer>
-        Requested page not found :(
-        <BackHomeLink to='/'>Back home</BackHomeLink>
+        {t('pageNotFoundMessage')}
+        <BackHomeLink to='/'>{t('backHomeLink')}</BackHomeLink>
       </NotFoundContainer>
     </Container>
   )

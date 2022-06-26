@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import styled, { css } from 'styled-components'
-import { Container } from './Container'
-import { Button } from '../UI/Button'
+import { Container } from '../layout/Container'
+import { Button } from './Button'
 import { useClickOutside } from '../../hooks/useClickOutside'
 import closeButtonIcon from '../../assets/img/button_close.png'
-import Portal from './Portal'
+import Portal from '../layout/Portal'
 import { media } from '../../styles/mixins'
 
 const Wrapper = styled(Container)`

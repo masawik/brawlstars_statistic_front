@@ -13,9 +13,8 @@ export interface EventCardProps {
 
 const EventCard: React.FC<EventCardProps> =
   ({ eventData }) => {
-
     return (
-      <EventCardContainer to={`/event/${eventData.id}`} data-testid='12'>
+      <EventCardContainer to={`/event/${eventData.id}`}>
         <EventCardContent>
           <EventCardInfo
             backgroundColor={eventData.gameModeColor}

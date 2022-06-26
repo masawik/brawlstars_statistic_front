@@ -10,6 +10,7 @@ import {
   selectEventStatisticFetching,
 } from '../../../store/eventStatistic/eventStatisticSelectors'
 import Loader from '../../UI/Loader'
+import { useTranslation } from 'react-i18next'
 
 const Event = () => {
   const navigate = useNavigate()
@@ -26,6 +27,8 @@ const Event = () => {
   const statistic =
     useAppSelector(createEventStatisticSelector(parsedEventId))
 
+  const { t } = useTranslation('event')
+
   useEffect(() => {
     if (statistic) return
     dispatch(getEventStatistic(parsedEventId))
@@ -35,7 +38,7 @@ const Event = () => {
     <Container>
       event id: {eventId}
       {isLoading && <Loader />}
-      {!isLoading && !statistic && 'no statistic for this event'}
+      {!isLoading && !statistic && t('noStatisticOnThisEventMessage')}
       {statistic && <BrawlerTable statistic={statistic} />}
     </Container>
   )

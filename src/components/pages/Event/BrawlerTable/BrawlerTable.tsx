@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useMemo } from 'react'
 import {
   Cell,
   createTable,
@@ -15,6 +15,7 @@ import defaultBrawlerImage from '../../../../assets/img/brawlers/28000011.png'
 import { SortBtn, Table, TableHeadRow } from './BrawlerTable.styles'
 import { TColorTypes } from '../../../../styles/styled'
 import { IBrawlerStatisticData } from '../../../../types/brawlerData'
+import { useTranslation } from 'react-i18next'
 
 // @ts-ignore
 type THeader = Header<Overwrite<{ Renderer: Render, Rendered: React.ReactNode | JSX.Element }, { Row: BrawlerStatistic }>>
@@ -23,28 +24,6 @@ type TCell = Cell<Overwrite<{ Renderer: Render, Rendered: React.ReactNode | JSX.
 
 
 const table = createTable().setRowType<IBrawlerStatisticData>()
-
-const columnSchema = [
-  table.createDataColumn('name', {
-    cell: info => info.getValue(),
-    header: () => 'brawler',
-    enableSorting: false,
-  }),
-  table.createDataColumn('games', {
-    cell: info => info.getValue(),
-    sortingFn: 'basic',
-  }),
-  table.createDataColumn('victories', {
-    cell: info => info.getValue(),
-    sortingFn: 'basic',
-  }),
-  table.createDataColumn('winRate', {
-    cell: info => `${info.getValue()}%`,
-    header: () => 'win rate',
-    sortingFn: 'basic',
-    sortDescFirst: true,
-  }),
-]
 
 const getSortBtnColorBySortState =
   (isSorted: false | SortDirection): keyof TColorTypes => {
@@ -67,6 +46,32 @@ const BrawlerTable: React.FC<IBrawlerTableProps> =
     const [sorting, setSorting] =
       React.useState<SortingState>([{ 'id': 'winRate', 'desc': true }])
 
+    const { t, i18n } = useTranslation('brawlerTable')
+
+    const columnSchema = useMemo(() => [
+      table.createDataColumn('name', {
+        cell: info => info.getValue(),
+        header: () => t('brawler'),
+        enableSorting: false,
+      }),
+      table.createDataColumn('games', {
+        cell: info => info.getValue(),
+        header: () => t('numberOfGames'),
+        sortingFn: 'basic',
+      }),
+      table.createDataColumn('victories', {
+        cell: info => info.getValue(),
+        header: () => t('numberOfVictories'),
+        sortingFn: 'basic',
+      }),
+      table.createDataColumn('winRate', {
+        cell: info => `${info.getValue()}%`,
+        header: () => t('winRate'),
+        sortingFn: 'basic',
+        sortDescFirst: true,
+      }),
+    ], [i18n.language])
+
     const instance = useTableInstance(table, {
       data: statistic,
       columns: columnSchema,
@@ -77,8 +82,7 @@ const BrawlerTable: React.FC<IBrawlerTableProps> =
     })
 
     //----- Rendering -----
-
-    const renderTh = (header: THeader) => {
+    const renderTh = useCallback((header: THeader) => {
       if (header.isPlaceholder) return
 
       let content = header.renderHeader()
@@ -96,14 +100,14 @@ const BrawlerTable: React.FC<IBrawlerTableProps> =
       }
 
       return (<th key={header.id}>{content}</th>)
-    }
+    }, [])
 
     //todo разобраться как сделать лучше
     const imageByNameMap: { [key: string]: string | undefined } = {}
     statistic.forEach(brawlerData => {
       imageByNameMap[brawlerData.name] = brawlerData.imageUrl
     })
-    const renderCell = (cell: TCell) => {
+    const renderCell = useCallback((cell: TCell) => {
       let content
 
       if (cell.column.id === 'name') {
@@ -119,7 +123,7 @@ const BrawlerTable: React.FC<IBrawlerTableProps> =
       }
 
       return (<td key={cell.id}>{content}</td>)
-    }
+    }, [])
 
     const $Thead = (
       <thead>

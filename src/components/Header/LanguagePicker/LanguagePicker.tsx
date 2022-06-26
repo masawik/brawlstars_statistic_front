@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import enLangIcon from '../../../assets/img/countries/united-kingdom.png'
 import ruLangIcon from '../../../assets/img/countries/russia.png'
 import { Link } from '../../UI/Link'
-import Popup from '../../layout/Popup'
+import Popup from '../../UI/Popup'
 import { elementSize, media } from '../../../styles/mixins'
 
 const OpenPickerButton =
@@ -39,7 +39,7 @@ const languageIconMap: { [key: string]: string } = {
 }
 
 const LanguagePicker = () => {
-  const { i18n } = useTranslation()
+  const { i18n, t } = useTranslation('languagePicker')
 
   const [isOpen, setIsOpen] = useState(false)
   const openPickerWindow = () => setIsOpen(true)
@@ -58,26 +58,29 @@ const LanguagePicker = () => {
 
     return Object.keys(i18n.store.data).map(lang => {
       return (
-        <LanguageButton key={lang} onClick={() => changeLanguage(lang)}>
-          <img src={languageIconMap[lang]} alt={`${lang} language`} />
+        <LanguageButton
+          key={lang}
+          onClick={() => changeLanguage(lang)}
+          aria-label={`${t('selectLanguageButtonAria')} ${lang}`}
+        >
+          <img src={languageIconMap[lang]} alt={`${lang}`} />
         </LanguageButton>
       )
     })
   }, [i18n.store.data])
 
-  /*todo i18n aria-label*/
   return (
     <>
       <OpenPickerButton
-        aria-label='select language'
+        aria-label={t('openPickerButtonAria')}
         onClick={onOpenButtonClick}
       >
         <img src={languageIconMap[i18n.language]}
-             alt={`${i18n.language} language`} />
+             alt={`${i18n.language}`} />
       </OpenPickerButton>
       {
         isOpen &&
-        <Popup title={'Select your language'} onClose={closePickerWindow}>
+        <Popup title={t('languagePickerPopupTitle')} onClose={closePickerWindow}>
           <LanguagePickerBody>
             {$languageButtons}
           </LanguagePickerBody>

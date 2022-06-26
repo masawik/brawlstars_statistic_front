@@ -6,6 +6,7 @@ import { Container } from '../layout/Container'
 import { ILinkProps, Link as StyledLink } from '../UI/Link'
 import { NavLink } from 'react-router-dom'
 import { media } from '../../styles/mixins'
+import { useTranslation } from 'react-i18next'
 
 const HeaderContainer = styled.div`
   margin-bottom: 15px;
@@ -21,7 +22,6 @@ const HeaderContent = styled.div`
   align-items: center;
   padding: 5px 0;
 `
-
 
 const logoLinkAttrs: ILinkProps = {
   as: NavLink,
@@ -47,12 +47,13 @@ const LogoLink = styled(StyledLink).withConfig({
 `
 
 const Header = () => {
+  const { t } = useTranslation('header')
   return (
     <HeaderContainer>
       <Container>
         <HeaderContent>
-          <LogoLink to='/' href='#'>
-            <img src={logoIcon} alt='brawl stars logo' />
+          <LogoLink to='/' href='#' aria-label={t('goHomeLinkAria')}>
+            <img src={logoIcon} alt='brawl stars' />
           </LogoLink>
 
           <LanguagePicker />

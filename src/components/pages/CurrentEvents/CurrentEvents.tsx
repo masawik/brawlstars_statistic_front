@@ -10,6 +10,7 @@ import {
 } from '../../../store/currentEvents/currentEventsSelectors'
 import { useAppDispatch } from '../../../hooks/useAppDispatch'
 import { getCurrentEvents } from '../../../store/currentEvents/currentEventsAsyncActions'
+import { useTranslation } from 'react-i18next'
 
 const Title = styled.h1`
   margin-bottom: 20px;
@@ -20,6 +21,7 @@ const CurrentEvents = () => {
   const isFetching = useAppSelector(selectCurrentEventsFetching)
   const currentEvents = useAppSelector(selectCurrentEvents)
   const dispatch = useAppDispatch()
+  const { t } = useTranslation('currentEvents')
 
   useEffect(() => {
     if (currentEvents.length !== 0) return
@@ -29,14 +31,14 @@ const CurrentEvents = () => {
   return (
     <section>
       <Container>
-        <Title>Current events</Title>
+        <Title>{t('pageTitle')}</Title>
         {isFetching && <Loader />}
 
         {!isFetching &&
         (
           currentEvents.length
             ? <EventList events={currentEvents} />
-            : 'no eventStatistic data'
+            : t('eventsDataUnavailable')
         )}
       </Container>
     </section>
