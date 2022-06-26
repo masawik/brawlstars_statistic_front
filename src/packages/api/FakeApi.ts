@@ -126,7 +126,7 @@ class FakeApi extends CApi {
     return new Promise((resolve => {
       setTimeout(() => {
         resolve(eventsStatisticData[eventId])
-      }, random(1000, 2000))
+      }, random(3000, 5000))
     }))
   }
 }

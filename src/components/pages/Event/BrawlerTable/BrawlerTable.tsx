@@ -12,7 +12,13 @@ import {
 } from '@tanstack/react-table'
 import BrawlerCard from './BrawlerCard/BrawlerCard'
 import defaultBrawlerImage from '../../../../assets/img/brawlers/28000011.png'
-import { SortBtn, Table, TableHeadRow } from './BrawlerTable.styles'
+import {
+  BrawlerCell,
+  BrawlerSkeleton,
+  SortBtn,
+  Table,
+  TableHeadRow, TableValueSkeleton,
+} from './BrawlerTable.styles'
 import { TColorTypes } from '../../../../styles/styled'
 import { IBrawlerStatisticData } from '../../../../types/brawlerData'
 import { useTranslation } from 'react-i18next'
@@ -21,7 +27,6 @@ import { useTranslation } from 'react-i18next'
 type THeader = Header<Overwrite<{ Renderer: Render, Rendered: React.ReactNode | JSX.Element }, { Row: BrawlerStatistic }>>
 // @ts-ignore
 type TCell = Cell<Overwrite<{ Renderer: Render, Rendered: React.ReactNode | JSX.Element }, { Row: BrawlerStatistic }>>
-
 
 const table = createTable().setRowType<IBrawlerStatisticData>()
 
@@ -37,12 +42,20 @@ const getSortBtnColorBySortState =
     }
   }
 
+const placeholderStatisticData: IBrawlerStatisticData[] = [
+  { name: 'placeholder', games: 0, victories: 0, winRate: 0 },
+  { name: 'placeholder', games: 0, victories: 0, winRate: 0 },
+  { name: 'placeholder', games: 0, victories: 0, winRate: 0 },
+  { name: 'placeholder', games: 0, victories: 0, winRate: 0 },
+]
+
 interface IBrawlerTableProps {
-  statistic: IBrawlerStatisticData[]
+  statistic: IBrawlerStatisticData[],
+  isLoading: boolean
 }
 
 const BrawlerTable: React.FC<IBrawlerTableProps> =
-  ({ statistic }) => {
+  ({ statistic, isLoading }) => {
     const [sorting, setSorting] =
       React.useState<SortingState>([{ 'id': 'winRate', 'desc': true }])
 
@@ -73,7 +86,7 @@ const BrawlerTable: React.FC<IBrawlerTableProps> =
     ], [i18n.language])
 
     const instance = useTableInstance(table, {
-      data: statistic,
+      data: isLoading ? placeholderStatisticData : statistic,
       columns: columnSchema,
       state: { sorting },
       getCoreRowModel: getCoreRowModel(),
@@ -107,23 +120,38 @@ const BrawlerTable: React.FC<IBrawlerTableProps> =
     statistic.forEach(brawlerData => {
       imageByNameMap[brawlerData.name] = brawlerData.imageUrl
     })
-    const renderCell = useCallback((cell: TCell) => {
+
+    const renderBrawlerCell = (cell: TCell) => {
       let content
+      const brawlerName = cell.getValue() as string
+      const brawlerImage = imageByNameMap[brawlerName] ?? defaultBrawlerImage
 
-      if (cell.column.id === 'name') {
-        const brawlerName = cell.getValue() as string
-        const brawlerImage = imageByNameMap[brawlerName] ?? defaultBrawlerImage
-
+      if (isLoading) {
+        content = (<BrawlerSkeleton />)
+      } else {
         content = (<BrawlerCard
           name={brawlerName}
           imageUrl={brawlerImage}
         />)
-      } else {
-        content = cell.renderCell()
       }
 
-      return (<td key={cell.id}>{content}</td>)
-    }, [])
+      return (
+        <BrawlerCell key={cell.id}>
+          {content}
+        </BrawlerCell>
+      )
+    }
+
+    const renderCell = (cell: TCell) => {
+      if (cell.column.id === 'name') return renderBrawlerCell(cell)
+
+      return (
+        <td key={cell.id}>
+          {isLoading
+            ? <TableValueSkeleton />
+            : cell.renderCell()}
+        </td>)
+    }
 
     const $Thead = (
       <thead>

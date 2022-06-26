@@ -9,7 +9,6 @@ import {
   createEventStatisticSelector,
   selectEventStatisticFetching,
 } from '../../../store/eventStatistic/eventStatisticSelectors'
-import Loader from '../../UI/Loader'
 import { useTranslation } from 'react-i18next'
 
 const Event = () => {
@@ -25,21 +24,20 @@ const Event = () => {
 
   const isLoading = useAppSelector(selectEventStatisticFetching)
   const statistic =
-    useAppSelector(createEventStatisticSelector(parsedEventId))
+    useAppSelector(createEventStatisticSelector(parsedEventId)) ?? []
 
   const { t } = useTranslation('event')
 
   useEffect(() => {
-    if (statistic) return
+    if (statistic.length) return
     dispatch(getEventStatistic(parsedEventId))
   }, [parsedEventId])
 
   return (
     <Container>
       event id: {eventId}
-      {isLoading && <Loader />}
-      {!isLoading && !statistic && t('noStatisticOnThisEventMessage')}
-      {statistic && <BrawlerTable statistic={statistic} />}
+      {!isLoading && !statistic.length && t('noStatisticOnThisEventMessage')}
+      <BrawlerTable isLoading={isLoading} statistic={statistic} />
     </Container>
   )
 }

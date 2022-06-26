@@ -1,5 +1,5 @@
 export const brawlerTable = {
-  brawler: 'Бравлер',
+  brawler: 'Боец',
   numberOfGames: 'Кол-во игр',
   numberOfVictories: 'Кол-во побед',
   winRate: '% побед'
