@@ -2,7 +2,7 @@ import gameModeIcon from '../../assets/img/game-modes/gemGrab.png'
 import mapImage from '../../assets/img/map_23b.png'
 import brawlerImage from '../../assets/img/brawlers/28000011.png'
 import { random } from 'lodash'
-import { CApi } from './IApi'
+import { CApi, IError } from './IApi'
 import { IEventStatistic, ICurrentEventDataRaw } from '../../types/eventData'
 
 const currentEventsData: ICurrentEventDataRaw[] = [
@@ -113,20 +113,27 @@ const eventsStatisticData: { [key: IEventStatistic['eventId']]: IEventStatistic 
   },
 }
 
+const error: IError = {
+  error: true,
+  message: 'brawl stars API is unavailable',
+}
+
 class FakeApi extends CApi {
-  getCurrentEvents = (): Promise<ICurrentEventDataRaw[]> => {
-    return new Promise((resolve => {
+  getCurrentEvents = (): Promise<ICurrentEventDataRaw[] | IError> => {
+    return new Promise(((resolve, reject) => {
       setTimeout(() => {
+        // resolve(error)
         resolve(currentEventsData)
       }, random(500, 2000))
     }))
   }
 
-  getBrawlersStatisticByEventId = (eventId: number): Promise<IEventStatistic> => {
+  getBrawlersStatisticByEventId = (eventId: number): Promise<IEventStatistic | IError> => {
     return new Promise((resolve => {
       setTimeout(() => {
-        resolve(eventsStatisticData[eventId])
-      }, random(3000, 5000))
+        resolve(error)
+        // resolve(eventsStatisticData[eventId])
+      }, random(500, 2000))
     }))
   }
 }

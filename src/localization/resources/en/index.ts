@@ -4,6 +4,7 @@ import { currentEvents } from './currentEvents'
 import { notFound } from './notFound'
 import { event } from './event'
 import { brawlerTable } from './brawlerTable'
+import { errorPopup } from './errorPopup'
 
 export default {
   header,
@@ -11,5 +12,6 @@ export default {
   currentEvents,
   notFound,
   event,
-  brawlerTable
+  brawlerTable,
+  errorPopup,
 }

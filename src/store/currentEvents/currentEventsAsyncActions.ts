@@ -1,9 +1,12 @@
 import { TAppDispatch } from '../index'
 import clientStorage from '../../packages/clientStorage'
-import { EventData } from '../../types/eventData'
+import { EventData, ICurrentEventDataRaw } from '../../types/eventData'
 import { parseEventsDate } from '../../packages/parseEventsDate'
 import { Api } from '../../packages/api'
 import { currentEventsActions } from './currentEventsSlice'
+import { errorPopupActions } from '../errorPopup/errorPopupSlice'
+import { IError } from '../../packages/api/IApi'
+import { getErrorMessage } from '../../packages/getErrorMessage'
 
 const getLocalSavedEvents = async (): Promise<EventData[] | null> => {
   const savedEvents = await clientStorage.currentEvents.get()
@@ -22,15 +25,23 @@ const getLocalSavedEvents = async (): Promise<EventData[] | null> => {
 export const getCurrentEvents = () => async (dispatch: TAppDispatch) => {
   const localSavedEvents = await getLocalSavedEvents()
   if (localSavedEvents) {
-    dispatch(currentEventsActions.setCurrentEvents(localSavedEvents))
-    return
+    return dispatch(currentEventsActions.setCurrentEvents(localSavedEvents))
   }
 
-  //todo обработать ошибку запроса
   dispatch(currentEventsActions.startFetching())
-  const currentEventsRaw = await Api.getCurrentEvents()
-  await clientStorage.currentEvents.set(currentEventsRaw)
 
+  let currentEventsRaw: ICurrentEventDataRaw[] | IError
+  try {
+    currentEventsRaw = await Api.getCurrentEvents()
+    if ('error' in currentEventsRaw) {
+      throw new Error(currentEventsRaw.message)
+    }
+  } catch (e) {
+    dispatch(currentEventsActions.stopFetching())
+    return dispatch(errorPopupActions.setErrorMessage(getErrorMessage(e)))
+  }
+
+  await clientStorage.currentEvents.set(currentEventsRaw)
   const currentEvents = parseEventsDate(currentEventsRaw)
   dispatch(currentEventsActions.setCurrentEvents(currentEvents))
   dispatch(currentEventsActions.stopFetching())

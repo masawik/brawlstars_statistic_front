@@ -82,7 +82,7 @@ const PopupBody = styled.div`
 interface IPopupProps {
   children: React.ReactNode,
   onClose: () => void,
-  title: string
+  title: React.ReactNode
 }
 
 const Popup: React.FC<IPopupProps> =

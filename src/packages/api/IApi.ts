@@ -3,8 +3,13 @@ import {
   ICurrentEventDataRaw,
 } from '../../types/eventData'
 
-export abstract class CApi {
-  abstract getCurrentEvents(): Promise<ICurrentEventDataRaw[]>
+export interface IError {
+  error: true,
+  message: string
+}
 
-  abstract getBrawlersStatisticByEventId(eventId: number): Promise<IEventStatistic>
+export abstract class CApi {
+  abstract getCurrentEvents(): Promise<ICurrentEventDataRaw[] | IError>
+
+  abstract getBrawlersStatisticByEventId(eventId: number): Promise<IEventStatistic | IError>
 }

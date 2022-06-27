@@ -5,6 +5,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import NotFound from './components/pages/NotFound'
 import Event from './components/pages/Event/Event'
 import AppLoader from './components/AppLoader/AppLoader'
+import ErrorPopup from './components/ErrorPopup/ErrorPopup'
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
           <Route path='/not-found' element={<NotFound />} />
           <Route path='*' element={<Navigate to='/not-found' replace />} />
         </Routes>
+
+        <ErrorPopup />
       </Layout>
     </Suspense>
   )

@@ -17,6 +17,7 @@ const Event = () => {
 
   const { eventId } = useParams()
   const parsedEventId = Number(eventId)
+
   if (isNaN(parsedEventId)) {
     navigate('/not-found')
     //todo добавить так же редирект при указании не существующего на сервере event

@@ -5,7 +5,7 @@ import { notFound } from './notFound'
 import { event } from './event'
 import { brawlerTable } from './brawlerTable'
 import { TLocalization } from '../TLocalization'
-
+import { errorPopup } from './errorPopup'
 
 const ru: TLocalization = {
   header,
@@ -14,6 +14,7 @@ const ru: TLocalization = {
   notFound,
   event,
   brawlerTable,
+  errorPopup,
 }
 
 export default ru
