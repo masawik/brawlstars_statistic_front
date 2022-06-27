@@ -5,7 +5,7 @@ import { Button } from './Button'
 import { useClickOutside } from '../../hooks/useClickOutside'
 import closeButtonIcon from '../../assets/img/button_close.png'
 import Portal from '../layout/Portal'
-import { media } from '../../styles/mixins'
+import { elementSize, media } from '../../styles/mixins'
 
 const Wrapper = styled(Container)`
   position: fixed;
@@ -54,8 +54,8 @@ const CloseButton = styled(Button).attrs({
   position: absolute;
   right: -5px;
   top: -5px;
-  height: 30px;
-  width: 30px;
+  z-index: 10;
+  ${elementSize(30)}
 `
 
 const PopupBody = styled.div`
