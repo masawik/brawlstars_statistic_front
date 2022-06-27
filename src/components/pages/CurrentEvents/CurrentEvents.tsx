@@ -9,8 +9,10 @@ import {
   selectCurrentEventsFetching,
 } from '../../../store/currentEvents/currentEventsSelectors'
 import { useAppDispatch } from '../../../hooks/useAppDispatch'
-import { getCurrentEvents } from '../../../store/currentEvents/currentEventsAsyncActions'
 import { useTranslation } from 'react-i18next'
+import Plug from '../../Plug/Plug'
+import { getCurrentEvents } from '../../../store/currentEvents/currentEventsAsyncActions'
+
 
 const Title = styled.h1`
   margin-bottom: 20px;
@@ -38,7 +40,7 @@ const CurrentEvents = () => {
         (
           currentEvents.length
             ? <EventList events={currentEvents} />
-            : t('eventsDataUnavailable')
+            : <Plug text={t('eventsDataUnavailable')} />
         )}
       </Container>
     </section>

@@ -122,6 +122,7 @@ class FakeApi extends CApi {
   getCurrentEvents = (): Promise<ICurrentEventDataRaw[] | IError> => {
     return new Promise(((resolve, reject) => {
       setTimeout(() => {
+        // reject('pook')
         // resolve(error)
         resolve(currentEventsData)
       }, random(500, 2000))
@@ -129,10 +130,13 @@ class FakeApi extends CApi {
   }
 
   getBrawlersStatisticByEventId = (eventId: number): Promise<IEventStatistic | IError> => {
-    return new Promise((resolve => {
+    return new Promise(((resolve, reject) => {
       setTimeout(() => {
-        resolve(error)
-        // resolve(eventsStatisticData[eventId])
+        if (eventId in eventsStatisticData) {
+          resolve(eventsStatisticData[eventId])
+        } else {
+          reject('No data on this event')
+        }
       }, random(500, 2000))
     }))
   }

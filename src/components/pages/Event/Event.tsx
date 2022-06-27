@@ -10,6 +10,7 @@ import {
   selectEventStatisticFetching,
 } from '../../../store/eventStatistic/eventStatisticSelectors'
 import { useTranslation } from 'react-i18next'
+import Plug from '../../Plug/Plug'
 
 const Event = () => {
   const navigate = useNavigate()
@@ -36,9 +37,16 @@ const Event = () => {
 
   return (
     <Container>
-      event id: {eventId}
-      {!isLoading && !statistic.length && t('noStatisticOnThisEventMessage')}
-      <BrawlerTable isLoading={isLoading} statistic={statistic} />
+      {
+        !isLoading && !statistic.length &&
+        <Plug text={t('noStatisticOnThisEventMessage')} />
+      }
+
+      {
+        (isLoading || !!statistic.length) &&
+        <BrawlerTable isLoading={isLoading} statistic={statistic} />
+      }
+
     </Container>
   )
 }
