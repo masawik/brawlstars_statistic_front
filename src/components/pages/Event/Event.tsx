@@ -39,7 +39,7 @@ const Event = () => {
     <Container>
       {
         !isLoading && !statistic.length &&
-        <Plug text={t('noStatisticOnThisEventMessage')} />
+        <Plug content={t('noStatisticOnThisEventMessage')} />
       }
 
       {

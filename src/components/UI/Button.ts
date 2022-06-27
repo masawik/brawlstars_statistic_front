@@ -23,7 +23,6 @@ export const Button = styled.button<IButtonProps>`
 
   position: relative;
   padding: 5px 10px;
-  z-index: 1;
   color: #fff;
   display: inline-block;
 

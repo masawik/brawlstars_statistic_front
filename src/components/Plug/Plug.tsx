@@ -25,17 +25,17 @@ const PlugText = styled.div`
   font-size: 24px;
   text-align: center;
   user-select: none;
-  
+
   ${media('wd')`
     font-size: 34px;
   `}
 `
 
 interface IPlugProps {
-  text: string
+  content: React.ReactNode
 }
 
-const Plug: React.FC<IPlugProps> = ({ text }) => {
+const Plug: React.FC<IPlugProps> = ({ content }) => {
   return (
     <PlugContainer>
       <PlugImageContainer>
@@ -74,7 +74,7 @@ const Plug: React.FC<IPlugProps> = ({ text }) => {
         </svg>
       </PlugImageContainer>
 
-      <PlugText>{text}</PlugText>
+      <PlugText>{content}</PlugText>
     </PlugContainer>
   )
 }

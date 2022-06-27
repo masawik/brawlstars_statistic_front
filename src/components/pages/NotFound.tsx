@@ -4,14 +4,9 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Button } from '../UI/Button'
 import { useTranslation } from 'react-i18next'
+import Plug from '../Plug/Plug'
 
-const NotFoundContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-
-const BackHomeLink = styled(Button).attrs({ as: Link, color: 'success' })`
+const BackHomeLink = styled(Button).attrs({ as: Link, color: 'primary' })`
   display: block;
   margin-top: 15px;
 `
@@ -19,12 +14,16 @@ const BackHomeLink = styled(Button).attrs({ as: Link, color: 'success' })`
 const NotFound = () => {
   const { t } = useTranslation('notFound')
 
+  const $Content = (
+    <>
+      {t('pageNotFoundMessage')}
+      <BackHomeLink to='/'>{t('backHomeLink')}</BackHomeLink>
+    </>
+  )
+
   return (
     <Container>
-      <NotFoundContainer>
-        {t('pageNotFoundMessage')}
-        <BackHomeLink to='/'>{t('backHomeLink')}</BackHomeLink>
-      </NotFoundContainer>
+      <Plug content={$Content} />
     </Container>
   )
 }

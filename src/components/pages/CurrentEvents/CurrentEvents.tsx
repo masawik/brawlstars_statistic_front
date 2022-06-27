@@ -40,7 +40,7 @@ const CurrentEvents = () => {
         (
           currentEvents.length
             ? <EventList events={currentEvents} />
-            : <Plug text={t('eventsDataUnavailable')} />
+            : <Plug content={t('eventsDataUnavailable')} />
         )}
       </Container>
     </section>
