@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { createRef, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Container } from '../../layout/Container'
 import BrawlerTable from './BrawlerTable/BrawlerTable'
@@ -11,44 +11,86 @@ import {
 } from '../../../store/eventStatistic/eventStatisticSelectors'
 import { useTranslation } from 'react-i18next'
 import Plug from '../../Plug/Plug'
-// import 'viewerjs/dist/viewer.css'
-// import Viewer from 'viewerjs'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { elementSize, media } from '../../../styles/mixins'
+//todo динамически имортировать при подходящей ширине экрана
+import 'viewerjs/dist/viewer.css'
+import Viewer from 'viewerjs'
+import searchIcon from '../../../assets/img/icon_search.png'
+
+
+const ContentGrid = styled.div`
+  display: grid;
+  gap: 20px;
+
+  grid-template-areas:
+          'info'
+          'table'
+          'map';
+
+  ${media('md')`
+    grid-template-areas:
+    'info info'
+    'map table';
+    grid-template-columns: 300px 1fr;
+  `}
+
+  ${media('lg')`
+      gap: 40px;
+  `}
+`
 
 const TableContainer = styled.div`
-  margin-bottom: 20px;
+  grid-area: table;
 `
 
 const EventMapImageContainer = styled.div`
-  display: contents;
   position: relative;
   width: 100%;
-  cursor: pointer;
-  overflow: hidden;
-  box-sizing: border-box;
+  max-width: 400px;
+  justify-self: center;
+  grid-area: map;
+
 
   ${media('md')`
-      display: inline-block;
       width: 300px;
+      cursor: zoom-in;
+      overflow: hidden;
+      box-sizing: border-box;
   `}
-
-
-  ${({ theme }) => css`
+  
+  ${({ theme }) => media('md')`
     border: 2px solid ${theme.color.types.primary.normal};
 
     &::after {
       position: absolute;
-      top: -25px;
-      right: -25px;
+      top: -30px;
+      right: -30px;
       content: '';
-      ${elementSize(50)};
+      ${elementSize(60)};
       transform: rotate(45deg);
       background-color: ${theme.color.types.primary.normal};
     }
+    
+    &::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 10;
+    height: 20px;
+    width: 20px;
+    background-image: url(${searchIcon});
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: rotate(-90deg);
+  }
   `}
 `
 
+const EventInfoContainer = styled.div`
+  grid-area: info;
+`
 
 const Event = () => {
   const navigate = useNavigate()
@@ -67,12 +109,22 @@ const Event = () => {
 
   const { t } = useTranslation('event')
 
-  // useEffect(() => {
-  //   const imageEl = document.getElementById('image')
-  //   if (imageEl) {
-  //     new Viewer(imageEl, {})
-  //   }
-  // }, [])
+  const mapImageRef = createRef<HTMLImageElement>()
+
+  useEffect(() => {
+    if (window.outerWidth >= 768 && mapImageRef.current) {
+      new Viewer(mapImageRef.current, {
+        focus: false,
+        fullscreen: false,
+        loading: false,
+        navbar: false,
+        rotatable: false,
+        title: false,
+        toolbar: false,
+        tooltip: false,
+      })
+    }
+  }, [mapImageRef.current])
 
   useEffect(() => {
     if (statistic.length) return
@@ -81,26 +133,31 @@ const Event = () => {
 
   return (
     <Container>
-      <TableContainer>
-        {
-          !isLoading && !statistic.length &&
-          <Plug content={t('noStatisticOnThisEventMessage')} />
-        }
+      <ContentGrid>
+        <div>
+          <h1>map name</h1>
+          <div>game mode</div>
+        </div>
 
-        {
-          (isLoading || !!statistic.length) &&
-          <BrawlerTable isLoading={isLoading} statistic={statistic} />
-        }
-      </TableContainer>
+        <TableContainer>
+          {
+            !isLoading && !statistic.length &&
+            <Plug content={t('noStatisticOnThisEventMessage')} />
+          }
 
-      {/*<EventMapImageContainer>*/}
-      {/*  <img*/}
-      {/*    id='image'*/}
-      {/*    src='https://cdn.brawlstats.com/maps/supercell-chill-space.png'*/}
-      {/*    alt='' />*/}
-      {/*</EventMapImageContainer>*/}
+          {
+            (isLoading || !!statistic.length) &&
+            <BrawlerTable isLoading={isLoading} statistic={statistic} />
+          }
+        </TableContainer>
 
-
+        <EventMapImageContainer>
+          <img
+            ref={mapImageRef}
+            src='https://cdn.brawlstats.com/maps/supercell-chill-space.png'
+            alt='' />
+        </EventMapImageContainer>
+      </ContentGrid>
     </Container>
   )
 }

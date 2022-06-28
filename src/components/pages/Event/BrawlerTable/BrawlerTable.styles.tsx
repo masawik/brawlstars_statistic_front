@@ -7,7 +7,6 @@ import React from 'react'
 export const Table = styled.table`
   width: 100%;
   margin: 0 auto;
-  max-width: 650px;
   border: 1px solid #000;
   background-color: rgba(255, 255, 255, 0.1);
   border-collapse: collapse;

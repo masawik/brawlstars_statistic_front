@@ -12,6 +12,7 @@ const CardContainer = styled.div`
 `
 
 const ImageContainer = styled.div`
+  flex-shrink: 0;
   width: 32px;
   margin-right: 10px;
 `
