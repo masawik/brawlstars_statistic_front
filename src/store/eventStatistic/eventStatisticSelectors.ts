@@ -1,5 +1,5 @@
 import { TRootState } from '../index'
-import { IEventStatistic } from '../../types/eventData'
+import { IEventStatistic } from '../../types/ICurrentEventData'
 
 export const selectEventStatisticFetching =
   (state: TRootState) => state.eventStatistic.isFetching

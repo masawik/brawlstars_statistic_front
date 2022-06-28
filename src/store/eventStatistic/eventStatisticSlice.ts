@@ -1,6 +1,6 @@
 import { IBrawlerStatisticData } from '../../types/brawlerData'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { IEventStatistic } from '../../types/eventData'
+import { IEventStatistic } from '../../types/ICurrentEventData'
 
 //todo добавить дату последнего обновления информации и обновлять когда устаревает
 

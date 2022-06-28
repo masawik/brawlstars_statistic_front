@@ -1,11 +1,11 @@
 import {
-  EventData,
+  ICurrentEventData,
   ICurrentEventDataRaw,
-} from '../../types/eventData'
+} from '../../types/ICurrentEventData'
 
 export const parseEventsDate =
-  (events: ICurrentEventDataRaw[]): EventData[] =>
-    events.map<EventData>(event => {
+  (events: ICurrentEventDataRaw[]): ICurrentEventData[] =>
+    events.map<ICurrentEventData>(event => {
       return {
         ...event,
         endTime: +new Date(event.endTime),

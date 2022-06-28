@@ -1,4 +1,4 @@
-import { IEventStatistic } from '../../types/eventData'
+import { IEventStatistic } from '../../types/ICurrentEventData'
 import { TAppDispatch } from '../index'
 import { eventStatisticActions } from './eventStatisticSlice'
 import { Api } from '../../packages/api'
@@ -17,10 +17,10 @@ export const getEventStatistic = (eventId: IEventStatistic['eventId']) =>
         throw new Error(eventStatistic.message)
       }
     } catch (e) {
-      return dispatch(errorPopupActions.setErrorMessage(getErrorMessage(e)))
-    } finally {
       dispatch(eventStatisticActions.stopFetching())
+      return dispatch(errorPopupActions.setErrorMessage(getErrorMessage(e)))
     }
-    
+
     dispatch(eventStatisticActions.addEventStatistic(eventStatistic))
+    dispatch(eventStatisticActions.stopFetching())
   }

@@ -6,6 +6,7 @@ export interface IEventData {
   mapName: string
   gameModeColor?: string
   gameModeIconUrl?: string
+  mapBannerImageUrl?: string
   mapImageUrl?: string
 }
 
@@ -13,7 +14,7 @@ export interface ICurrentEventDataRaw extends IEventData {
   endTime: string
 }
 
-export interface EventData extends IEventData {
+export interface ICurrentEventData extends IEventData {
   endTime: number
 }
 

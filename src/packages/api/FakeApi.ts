@@ -3,7 +3,10 @@ import mapImage from '../../assets/img/map_23b.png'
 import brawlerImage from '../../assets/img/brawlers/28000011.png'
 import { random } from 'lodash'
 import { CApi, IError } from './IApi'
-import { IEventStatistic, ICurrentEventDataRaw } from '../../types/eventData'
+import {
+  IEventStatistic,
+  ICurrentEventDataRaw, IEventData,
+} from '../../types/ICurrentEventData'
 
 const currentEventsData: ICurrentEventDataRaw[] = [
   {
@@ -11,63 +14,25 @@ const currentEventsData: ICurrentEventDataRaw[] = [
     gameMode: 'GEM GRAB',
     mapName: 'map name',
     gameModeIconUrl: gameModeIcon,
-    mapImageUrl: mapImage,
+    mapBannerImageUrl: mapImage,
     endTime: '2022-07-23T01:39:33.775Z',
+    mapImageUrl: 'https://cdn.brawlstats.com/maps/supercell-chill-space.png',
   },
   {
     id: 2,
     gameMode: 'GEM GRAB',
     mapName: 'map name 2',
     gameModeIconUrl: gameModeIcon,
-    mapImageUrl: mapImage,
+    mapBannerImageUrl: mapImage,
     endTime: '2022-08-23T01:39:33.775Z',
+    mapImageUrl: 'https://cdn.brawlstats.com/maps/supercell-chill-space.png',
   },
   {
     id: 3,
     gameMode: 'GEM GRAB',
-    mapName: 'map name',
-    gameModeIconUrl: gameModeIcon,
-    mapImageUrl: mapImage,
-    endTime: '2022-07-23T01:39:33.775Z',
-  },
-  {
-    id: 4,
-    gameMode: 'GEM GRAB',
     mapName: 'map name 2',
     gameModeIconUrl: gameModeIcon,
-    mapImageUrl: mapImage,
-    endTime: '2022-08-23T01:39:33.775Z',
-  },
-  {
-    id: 5,
-    gameMode: 'GEM GRAB',
-    mapName: 'map name',
-    gameModeIconUrl: gameModeIcon,
-    mapImageUrl: mapImage,
-    endTime: '2022-07-23T01:39:33.775Z',
-  },
-  {
-    id: 6,
-    gameMode: 'GEM GRAB',
-    mapName: 'map name 2',
-    gameModeIconUrl: gameModeIcon,
-    mapImageUrl: mapImage,
-    endTime: '2022-08-23T01:39:33.775Z',
-  },
-  {
-    id: 7,
-    gameMode: 'GEM GRAB',
-    mapName: 'map name',
-    gameModeIconUrl: gameModeIcon,
-    mapImageUrl: mapImage,
-    endTime: '2022-07-23T01:39:33.775Z',
-  },
-  {
-    id: 8,
-    gameMode: 'GEM GRAB',
-    mapName: 'map name 2',
-    gameModeIconUrl: gameModeIcon,
-    mapImageUrl: mapImage,
+    mapBannerImageUrl: mapImage,
     endTime: '2022-08-23T01:39:33.775Z',
   },
 ]
@@ -120,13 +85,26 @@ const error: IError = {
 
 class FakeApi extends CApi {
   getCurrentEvents = (): Promise<ICurrentEventDataRaw[] | IError> => {
-    return new Promise(((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       setTimeout(() => {
         // reject('pook')
         // resolve(error)
         resolve(currentEventsData)
       }, random(500, 2000))
-    }))
+    })
+  }
+
+  getEventById = (eventId: IEventData['id']): Promise<IEventData | IError> => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const event = currentEventsData.find(eventItem => eventItem.id === eventId)
+        if (event) {
+          resolve(event as IEventData)
+        } else {
+          reject(error)
+        }
+      }, random(500, 1000))
+    })
   }
 
   getBrawlersStatisticByEventId = (eventId: number): Promise<IEventStatistic | IError> => {
@@ -137,7 +115,7 @@ class FakeApi extends CApi {
         } else {
           reject('No data on this event')
         }
-      }, random(500, 2000))
+      }, random(1000, 2000))
     }))
   }
 }

@@ -4,15 +4,14 @@ import EventList from '../../EventList/EventList'
 import styled from 'styled-components'
 import Loader from '../../UI/Loader'
 import { useAppSelector } from '../../../hooks/useAppSelector'
-import {
-  selectCurrentEvents,
-  selectCurrentEventsFetching,
-} from '../../../store/currentEvents/currentEventsSelectors'
 import { useAppDispatch } from '../../../hooks/useAppDispatch'
 import { useTranslation } from 'react-i18next'
 import Plug from '../../Plug/Plug'
-import { getCurrentEvents } from '../../../store/currentEvents/currentEventsAsyncActions'
-
+import {
+  selectCurrentEvents,
+  selectEventsFetching,
+} from '../../../store/events/eventsSelectors'
+import { getCurrentEvents } from '../../../store/events/eventsAsyncActions'
 
 const Title = styled.h1`
   margin-bottom: 20px;
@@ -20,13 +19,13 @@ const Title = styled.h1`
 `
 
 const CurrentEvents = () => {
-  const isFetching = useAppSelector(selectCurrentEventsFetching)
+  const isFetching = useAppSelector(selectEventsFetching)
   const currentEvents = useAppSelector(selectCurrentEvents)
   const dispatch = useAppDispatch()
   const { t } = useTranslation('currentEvents')
 
   useEffect(() => {
-    if (currentEvents.length !== 0) return
+    if (currentEvents.length) return
     dispatch(getCurrentEvents())
   }, [])
 

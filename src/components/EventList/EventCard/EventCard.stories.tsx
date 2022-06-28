@@ -39,6 +39,7 @@ EventCard.args = {
     gameModeColor: '#fff',
     mapName: 'map name',
     gameModeIconUrl: gameModeIcon,
-    mapImageUrl: mapImage,
+    mapBannerImageUrl: mapImage,
+    endTime: new Date().getTime()
   },
 }

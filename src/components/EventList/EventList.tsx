@@ -2,7 +2,7 @@ import React from 'react'
 import EventCard from './EventCard/EventCard'
 import styled from 'styled-components'
 import { placeholder } from '../../styles/placeholders'
-import { IEventData } from '../../types/eventData'
+import { ICurrentEventData } from '../../types/ICurrentEventData'
 import { media } from '../../styles/mixins'
 
 const EventListUl = styled.ul`
@@ -29,7 +29,7 @@ const EventListLi = styled.li`
 `
 
 interface IEventListProps {
-  events: IEventData[]
+  events: ICurrentEventData[]
 }
 
 const EventList: React.FC<IEventListProps> = ({ events }) => {

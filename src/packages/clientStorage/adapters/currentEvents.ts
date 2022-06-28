@@ -1,6 +1,6 @@
 import {
   ICurrentEventDataRaw,
-} from '../../../types/eventData'
+} from '../../../types/ICurrentEventData'
 import LocalStorage from '../storages/LocalStorage'
 
 const CURRENT_EVENTS = 'CURRENT_EVENTS'

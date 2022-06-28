@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { currentEventsReducer } from './currentEvents/currentEventsSlice'
 import { eventStatisticReducer } from './eventStatistic/eventStatisticSlice'
 import { errorPopupReducer } from './errorPopup/errorPopupSlice'
+import { eventsReducer } from './events/eventsSlice'
 
 export const store = configureStore({
   reducer: {
-    currentEvents: currentEventsReducer,
+    events: eventsReducer,
     eventStatistic: eventStatisticReducer,
     errorPopup: errorPopupReducer,
   },

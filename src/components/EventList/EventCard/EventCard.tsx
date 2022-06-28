@@ -4,10 +4,10 @@ import {
   EventCardContent, EventCardDescription, EventCardImageContainer,
   EventCardInfo, EventCardTitle,
 } from './EventCard.styles'
-import { IEventData } from '../../../types/eventData'
+import { ICurrentEventData } from '../../../types/ICurrentEventData'
 
 export interface EventCardProps {
-  eventData: IEventData
+  eventData: ICurrentEventData
 }
 
 
@@ -24,7 +24,7 @@ const EventCard: React.FC<EventCardProps> =
             <EventCardDescription>{eventData.mapName}</EventCardDescription>
           </EventCardInfo>
 
-          <EventCardImageContainer image={eventData.mapImageUrl} />
+          <EventCardImageContainer image={eventData.mapBannerImageUrl} />
         </EventCardContent>
       </EventCardContainer>
     )
