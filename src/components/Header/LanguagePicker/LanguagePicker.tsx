@@ -34,8 +34,8 @@ const LanguagePickerBody = styled.div`
 `
 
 const languageIconMap: { [key: string]: string } = {
-  'en': enLangIcon,
-  'ru': ruLangIcon,
+  'en-UK': enLangIcon,
+  'ru-RU': ruLangIcon,
 }
 
 const LanguagePicker = () => {

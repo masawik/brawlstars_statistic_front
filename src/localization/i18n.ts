@@ -5,8 +5,8 @@ import en from './resources/en'
 import ru from './resources/ru'
 
 export const resources = {
-  en,
-  ru
+  'en-UK': en,
+  'ru-RU': ru,
 } as const
 
 i18n
