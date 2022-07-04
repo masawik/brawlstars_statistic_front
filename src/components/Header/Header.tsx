@@ -1,5 +1,5 @@
 import React from 'react'
-import logoIcon from '../../assets/img/logo-star.png'
+import logoIcon from '../../assets/img/ui/logo-star.png'
 import LanguagePicker from './LanguagePicker/LanguagePicker'
 import styled, { css } from 'styled-components'
 import { Container } from '../layout/Container'

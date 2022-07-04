@@ -2,8 +2,8 @@ import React from 'react'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import EventCardComponent from './EventCard'
-import gameModeIcon from '../../../assets/img/game-modes/gemGrab.png'
-import mapImage from '../../../assets/img/map_23b.png'
+import gameModeIcon from '../../../assets/img/mock/game_mode_gem_grab.png'
+import mapImage from '../../../assets/img/mock/map_banner_1.png'
 
 export default {
   title: 'EventCard',

@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components'
 import { Link } from 'react-router-dom'
 import * as SM from '../../../styles/mixins'
-import defaultGameModeIcon from '../../../assets/img/game-modes/gift.png'
+import defaultGameModeIcon from '../../../assets/img/ui/defaultGameModeIcon.png'
 import { media, textOverload } from '../../../styles/mixins'
-import defaultEventImage from '../../../assets/img/map_23b.png'
+import defaultEventImage from '../../../assets/img/mock/map_banner_1.png'
 
 const containerSkew = 5 // in degs
 

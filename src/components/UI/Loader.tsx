@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
-import logoImg from '../../assets/img/logo-star-wings.png'
+import logoImg from '../../assets/img/ui/logo-star-wings.png'
 
 const LoaderContainer = styled.div`
   display: flex;

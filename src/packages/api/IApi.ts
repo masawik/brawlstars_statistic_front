@@ -8,6 +8,8 @@ export interface IError {
   message: string
 }
 
+//todo Добавить header языка в реализацию настоящего API
+
 export abstract class CApi {
   abstract getCurrentEvents(): Promise<ICurrentEventDataRaw[] | IError>
 

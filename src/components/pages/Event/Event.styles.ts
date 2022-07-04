@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 import { elementSize, media } from '../../../styles/mixins'
-import searchIcon from '../../../assets/img/icon_search.png'
+import searchIcon from '../../../assets/img/ui/icon_search.png'
 
 interface IContentGridProps {
   withMap: boolean

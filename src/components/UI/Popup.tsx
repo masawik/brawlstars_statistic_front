@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import { Container } from '../layout/Container'
 import { Button } from './Button'
 import { useClickOutside } from '../../hooks/useClickOutside'
-import closeButtonIcon from '../../assets/img/button_close.png'
+import closeButtonIcon from '../../assets/img/ui/button_close.png'
 import Portal from '../layout/Portal'
 import { elementSize, media } from '../../styles/mixins'
 

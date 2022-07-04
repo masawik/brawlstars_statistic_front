@@ -1,6 +1,14 @@
-import gameModeIcon from '../../assets/img/game-modes/gemGrab.png'
-import mapImage from '../../assets/img/map_23b.png'
+import gemGrabIcon from '../../assets/img/mock/game_mode_gem_grab.png'
+import bountyIcon from '../../assets/img/mock/game_mode_bounty.png'
+import siegeIcon from '../../assets/img/mock/game_mode_siege.png'
+import wipeoutIcon from '../../assets/img/mock/game_mode_wipeout.png'
+import mapBanner1 from '../../assets/img/mock/map_banner_1.png'
+import mapBanner2 from '../../assets/img/mock/map_banner_2.png'
+import mapBanner3 from '../../assets/img/mock/map_banner_3.png'
+import mapBanner4 from '../../assets/img/mock/map_banner_4.png'
 import brawlerImage from '../../assets/img/brawlers/28000011.png'
+import mapImage from '../../assets/img/mock/map.png'
+
 import { random } from 'lodash'
 import { CApi, IError } from './IApi'
 import {
@@ -13,27 +21,41 @@ const currentEventsData: ICurrentEventDataRaw[] = [
     id: 1,
     gameMode: 'GEM GRAB',
     mapName: 'map name',
-    gameModeIconUrl: gameModeIcon,
-    mapBannerImageUrl: mapImage,
-    endTime: '2022-07-23T01:39:33.775Z',
-    mapImageUrl: 'https://cdn.brawlstats.com/maps/supercell-chill-space.png',
+    gameModeIconUrl: gemGrabIcon,
+    mapBannerImageUrl: mapBanner1,
+    gameModeColor: '#9a3cf2',
+    endTime: '2023-07-23T01:39:33.775Z',
+    mapImageUrl: mapImage,
   },
   {
     id: 2,
-    gameMode: 'GEM GRAB',
-    mapName: 'map name 2',
-    gameModeIconUrl: gameModeIcon,
-    mapBannerImageUrl: mapImage,
-    endTime: '2022-08-23T01:39:33.775Z',
-    mapImageUrl: 'https://cdn.brawlstats.com/maps/supercell-chill-space.png',
+    gameMode: 'BOUNTY',
+    mapName: 'map name',
+    gameModeIconUrl: bountyIcon,
+    gameModeColor: '#00cffb',
+    mapBannerImageUrl: mapBanner2,
+    endTime: '2023-08-23T01:39:33.775Z',
+    mapImageUrl: mapImage,
   },
   {
     id: 3,
-    gameMode: 'GEM GRAB',
-    mapName: 'map name 2',
-    gameModeIconUrl: gameModeIcon,
-    mapBannerImageUrl: mapImage,
-    endTime: '2022-08-23T01:39:33.775Z',
+    gameMode: 'SIEGE',
+    mapName: 'map name',
+    gameModeIconUrl: siegeIcon,
+    gameModeColor: '#f04f32',
+    mapBannerImageUrl: mapBanner3,
+    endTime: '2023-08-23T01:39:33.775Z',
+    mapImageUrl: mapImage,
+  },
+  {
+    id: 4,
+    gameMode: 'WIPEOUT',
+    mapName: 'map name',
+    gameModeIconUrl: wipeoutIcon,
+    gameModeColor: '#e44f58',
+    mapBannerImageUrl: mapBanner4,
+    endTime: '2023-08-23T01:39:33.775Z',
+    mapImageUrl: mapImage,
   },
 ]
 
