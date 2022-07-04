@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/brawlstars_statistic_front/static/css/main.9410bb55.css",
+    "main.js": "/brawlstars_statistic_front/static/js/main.4a3edbf1.js",
+    "static/media/map_banner_2.png": "/brawlstars_statistic_front/static/media/map_banner_2.fadd9dde17a8d4cd2da3.png",
+    "static/media/map_banner_1.png": "/brawlstars_statistic_front/static/media/map_banner_1.2dee9bdd2e18786cf8bc.png",
+    "static/media/map.png": "/brawlstars_statistic_front/static/media/map.7fc089d8cb92ce4983dc.png",
+    "static/media/map_banner_3.png": "/brawlstars_statistic_front/static/media/map_banner_3.6d36ef0da9f87bbe0aa2.png",
+    "static/media/neris-black.woff": "/brawlstars_statistic_front/static/media/neris-black.e1a85e2dd709e2359849.woff",
+    "static/media/map_banner_4.png": "/brawlstars_statistic_front/static/media/map_banner_4.ff290f7642e7c9d4c767.png",
+    "static/media/logo-star-wings.png": "/brawlstars_statistic_front/static/media/logo-star-wings.853528398f28ac75d203.png",
+    "static/media/logo-star.png": "/brawlstars_statistic_front/static/media/logo-star.fee3ae58906f9bacbf1e.png",
+    "static/media/neris-black.woff2": "/brawlstars_statistic_front/static/media/neris-black.d39cc02a4f1dc1a5ecb0.woff2",
+    "static/media/lilita_one.woff": "/brawlstars_statistic_front/static/media/lilita_one.e413d32d311f3a796bc8.woff",
+    "static/media/nougat.woff": "/brawlstars_statistic_front/static/media/nougat.3c01307fa17cbfcf4c10.woff",
+    "static/media/game_mode_wipeout.png": "/brawlstars_statistic_front/static/media/game_mode_wipeout.a33d67a8706dce81a7d8.png",
+    "static/media/lilita_one.woff2": "/brawlstars_statistic_front/static/media/lilita_one.148613d2dc9b79826f35.woff2",
+    "static/media/nougat.woff2": "/brawlstars_statistic_front/static/media/nougat.b788a9ed0f8b3c9237a4.woff2",
+    "static/media/defaultGameModeIcon.png": "/brawlstars_statistic_front/static/media/defaultGameModeIcon.4facfcf611edf11f386b.png",
+    "static/media/28000011.png": "/brawlstars_statistic_front/static/media/28000011.5828b98e017d788de757.png",
+    "static/media/game_mode_siege.png": "/brawlstars_statistic_front/static/media/game_mode_siege.c8d8529dc828e5102e68.png",
+    "static/media/game_mode_gem_grab.png": "/brawlstars_statistic_front/static/media/game_mode_gem_grab.35287253db356a304364.png",
+    "static/media/game_mode_bounty.png": "/brawlstars_statistic_front/static/media/game_mode_bounty.3bd283d927237a013ab5.png",
+    "static/media/icon_search.png": "/brawlstars_statistic_front/static/media/icon_search.ab88701a152ece2a1c7f.png",
+    "static/media/united-kingdom.png": "/brawlstars_statistic_front/static/media/united-kingdom.082c38f6310e527d0a9d.png",
+    "static/media/button_close.png": "/brawlstars_statistic_front/static/media/button_close.c881b3f6ff81162fc3f6.png",
+    "static/media/russia.png": "/brawlstars_statistic_front/static/media/russia.eafc5918e45c6921ef6e.png",
+    "index.html": "/brawlstars_statistic_front/index.html",
+    "main.9410bb55.css.map": "/brawlstars_statistic_front/static/css/main.9410bb55.css.map",
+    "main.4a3edbf1.js.map": "/brawlstars_statistic_front/static/js/main.4a3edbf1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9410bb55.css",
+    "static/js/main.4a3edbf1.js"
+  ]
+}
